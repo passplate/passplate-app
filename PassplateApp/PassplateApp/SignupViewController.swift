@@ -1,16 +1,16 @@
 //
-//  LoginViewController.swift
+//  SignupViewController.swift
 //  PassplateApp
 //
-//  Created by Annie Prosper on 10/11/23.
+//  Created by Annie Prosper on 10/12/23.
 //
 
 import UIKit
-import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class SignupViewController: UIViewController {
 
-    // SigninSegue
+    // SignupSegue
+    // CreateAccountSegue
     override func viewDidLoad() {
         super.viewDidLoad()
 

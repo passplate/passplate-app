@@ -29,6 +29,7 @@
 		9045273B2AD59AD600EC3736 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 9045273A2AD59AD600EC3736 /* FirebaseStorageCombine-Community */; };
 		90DB7D9A2AD7AFB40038F36D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */; };
 		90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */; };
+		90DB7D9E2AD7B5F70038F36D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		90DB7D982AD7A6470038F36D /* PassplateApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PassplateApp.entitlements; sourceTree = "<group>"; };
 		90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */,
 				850110292ACF43A60068A749 /* ViewController.swift */,
 				8501102B2ACF43A60068A749 /* Main.storyboard */,
+				90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */,
 				8501102E2ACF43A70068A749 /* Assets.xcassets */,
 				850110302ACF43A70068A749 /* LaunchScreen.storyboard */,
 				90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */,
@@ -196,6 +199,7 @@
 			files = (
 				90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */,
 				8501102A2ACF43A60068A749 /* ViewController.swift in Sources */,
+				90DB7D9E2AD7B5F70038F36D /* SignupViewController.swift in Sources */,
 				850110262ACF43A60068A749 /* AppDelegate.swift in Sources */,
 				850110282ACF43A60068A749 /* SceneDelegate.swift in Sources */,
 			);
