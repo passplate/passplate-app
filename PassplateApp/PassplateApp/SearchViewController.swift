@@ -13,7 +13,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     var recipes: Recipes
     let textCellIdentifier = "TextCell"
-    var imageCache = [String: UIImage]()
     let recipeSegueIdentifier = "RecipeSegueIdentifier"
 
     override func viewDidLoad() {
@@ -93,18 +92,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.imageView?.contentMode = .scaleAspectFit
         
         if let imageURL = URL(string: recipes.meals[row].strMealThumb) {
-            if let cachedImage = self.imageCache[recipes.meals[row].strMealThumb] {
-                // If the image is already cached, use the cached image
-                cell.imageView?.image = cachedImage
-            } else {
-                DispatchQueue.global().async {
-                    if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            cell.imageView?.image = image
-                            cell.setNeedsLayout() // Ensure the cell layout is updated
-                            // Cache the loaded image
-                            self.imageCache[self.recipes.meals[row].strMealThumb] = image
-                        }
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.imageView?.image = image
+                        cell.setNeedsLayout()
                     }
                 }
             }

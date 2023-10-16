@@ -14,8 +14,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     // Measurement, ingredient
     var ingredients: [(String, String)] = []
 
-    
-//    @IBOutlet var recipeName: UILabel!
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
