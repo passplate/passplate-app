@@ -9,25 +9,31 @@
 /* Begin PBXBuildFile section */
 		850110262ACF43A60068A749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110252ACF43A60068A749 /* AppDelegate.swift */; };
 		850110282ACF43A60068A749 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110272ACF43A60068A749 /* SceneDelegate.swift */; };
-		8501102A2ACF43A60068A749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110292ACF43A60068A749 /* ViewController.swift */; };
+		8501102A2ACF43A60068A749 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110292ACF43A60068A749 /* SearchViewController.swift */; };
 		8501102D2ACF43A60068A749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8501102B2ACF43A60068A749 /* Main.storyboard */; };
 		8501102F2ACF43A70068A749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8501102E2ACF43A70068A749 /* Assets.xcassets */; };
 		850110322ACF43A70068A749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850110302ACF43A70068A749 /* LaunchScreen.storyboard */; };
 		850110612AD78B700068A749 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110602AD78B700068A749 /* Recipe.swift */; };
 		850110652AD7B1330068A749 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110642AD7B1330068A749 /* Recipes.swift */; };
+		850A675A2ADD9F4E008AD61F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A67592ADD9F4E008AD61F /* RecipeViewController.swift */; };
+		850A675C2ADDA91A008AD61F /* FullRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A675B2ADDA91A008AD61F /* FullRecipe.swift */; };
+		850A675E2ADDAA8C008AD61F /* RecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A675D2ADDAA8C008AD61F /* RecipeResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		850110222ACF43A60068A749 /* PassplateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassplateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850110252ACF43A60068A749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		850110272ACF43A60068A749 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		850110292ACF43A60068A749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		850110292ACF43A60068A749 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8501102C2ACF43A60068A749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8501102E2ACF43A70068A749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		850110312ACF43A70068A749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		850110332ACF43A70068A749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		850110602AD78B700068A749 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		850110642AD7B1330068A749 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		850A67592ADD9F4E008AD61F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		850A675B2ADDA91A008AD61F /* FullRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRecipe.swift; sourceTree = "<group>"; };
+		850A675D2ADDAA8C008AD61F /* RecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +68,13 @@
 			children = (
 				850110252ACF43A60068A749 /* AppDelegate.swift */,
 				850110272ACF43A60068A749 /* SceneDelegate.swift */,
-				850110292ACF43A60068A749 /* ViewController.swift */,
+				850110292ACF43A60068A749 /* SearchViewController.swift */,
 				850110602AD78B700068A749 /* Recipe.swift */,
+				850A675B2ADDA91A008AD61F /* FullRecipe.swift */,
 				850110642AD7B1330068A749 /* Recipes.swift */,
 				8501102B2ACF43A60068A749 /* Main.storyboard */,
+				850A67592ADD9F4E008AD61F /* RecipeViewController.swift */,
+				850A675D2ADDAA8C008AD61F /* RecipeResponse.swift */,
 				8501102E2ACF43A70068A749 /* Assets.xcassets */,
 				850110302ACF43A70068A749 /* LaunchScreen.storyboard */,
 				850110332ACF43A70068A749 /* Info.plist */,
@@ -145,9 +154,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				850110652AD7B1330068A749 /* Recipes.swift in Sources */,
-				8501102A2ACF43A60068A749 /* ViewController.swift in Sources */,
+				8501102A2ACF43A60068A749 /* SearchViewController.swift in Sources */,
+				850A675A2ADD9F4E008AD61F /* RecipeViewController.swift in Sources */,
 				850110262ACF43A60068A749 /* AppDelegate.swift in Sources */,
+				850A675C2ADDA91A008AD61F /* FullRecipe.swift in Sources */,
 				850110282ACF43A60068A749 /* SceneDelegate.swift in Sources */,
+				850A675E2ADDAA8C008AD61F /* RecipeResponse.swift in Sources */,
 				850110612AD78B700068A749 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

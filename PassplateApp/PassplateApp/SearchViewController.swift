@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var recipes: Recipes
     let textCellIdentifier = "TextCell"
     var imageCache = [String: UIImage]()
-
+    let recipeSegueIdentifier = "RecipeSegueIdentifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                    self.recipes.meals.forEach { recipe in print(recipe.strMealThumb) }
                 } catch {
                     print("Failed to load: \(error)")
                 }
@@ -66,6 +65,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         task.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == recipeSegueIdentifier,
+           let destination = segue.destination as? RecipeViewController,
+           let recipeIndex = tableView.indexPathForSelectedRow?.row
+        {
+            destination.recipe = recipes.meals[recipeIndex]
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
