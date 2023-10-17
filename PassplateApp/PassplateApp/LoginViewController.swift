@@ -11,29 +11,27 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
-    //CreateAccountSegue
     @IBOutlet weak var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.textContentType = .oneTimeCode
+
         
-        Auth.auth().addStateDidChangeListener() {
-            (auth, user) in
-            if user != nil {
-                self.performSegue(withIdentifier: "SigninSegue", sender: self)
-                self.emailTextField.text = nil
-                self.passwordTextField.text = nil
-            }
-        }
+//        Auth.auth().addStateDidChangeListener() {
+//            (auth, user) in
+//            if user != nil {
+//                self.performSegue(withIdentifier: "SigninSegue", sender: self)
+//                self.emailTextField.text = nil
+//                self.passwordTextField.text = nil
+//            }
+//        }
         
     }
     
     
-    // ERROR MESSAGES:
-    // email not found (?) 
-    // password incorrect
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // SigninSegue
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
@@ -46,14 +44,29 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func signinButtonPressed(_ sender: Any) {
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) {
-            (authResult,error) in
-            //            if let error = error as NSError? {
-            //                self.errorMessage.text + "\(error.localizedDescription)"
-            //            } else {
-            // self.errorMessage.text = ""
-            //}
-        }
+        let controller = UIAlertController(
+            title: "Error",
+            message: "Error logging user in",
+            preferredStyle: .actionSheet
+        )
         
+        controller.addAction(UIAlertAction (
+            title: "Ok",
+            style: .default
+        ))
+        
+        Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) {
+            (authResult,error) in
+                if let error = error as NSError? {
+                    print("Error logging user in: \(error.localizedDescription)")
+                    print(self.emailTextField.text!)
+                    print(self.passwordTextField.text!)
+                    self.present(controller, animated: true)
+                } else {
+                    self.performSegue(withIdentifier: "SigninSegue", sender: self)
+                    self.emailTextField.text = nil
+                    self.passwordTextField.text = nil
+                }
+        }
     }
 }

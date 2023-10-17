@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
 
@@ -19,20 +20,25 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.isSecureTextEntry = true
-        // Do any additional setup after loading the view.
+        passwordTextField.textContentType = .oneTimeCode
+        
+        confirmPasswordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.textContentType = .oneTimeCode
+
+//        Auth.auth().addStateDidChangeListener() {
+//            (auth, user) in
+//            if user != nil {
+//                self.performSegue(withIdentifier: "SignupSegue", sender: self)
+//                self.emailTextField.text = nil
+//                self.passwordTextField.text = nil
+//            }
+//        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
     }
-    
-    // ERROR MESSAGES:
-    // please enter a valid email address
-    // please enter a password of at least 6 characters
-    // password mismatch
-    // incorrect info entered
-    
     
     func isValidEmail(_ email: String) -> Bool {
        let emailRegEx =
@@ -46,9 +52,55 @@ class SignupViewController: UIViewController {
        let minPasswordLength = 6
        return password.count >= minPasswordLength
     }
+    
+    
+    @IBAction func signupButtonPressed(_ sender: Any) {
+        let controller = UIAlertController(
+            title: "Error",
+            message: "Required fields are empty",
+            preferredStyle: .actionSheet
+        )
+        
+        controller.addAction(UIAlertAction (
+            title: "Ok",
+            style: .default
+        ))
+        
+        
+        if (passwordTextField.text!.isEmpty || emailTextField.text!.isEmpty) {
+            present(controller, animated: true)
+        }
+        
+        let validPassword = isValidPassword(passwordTextField.text!)
+        let validEmail = isValidEmail(emailTextField.text!)
+        let passwordsMatch = passwordTextField.text! == confirmPasswordTextField.text!
 
-//    Auth.auth().currentUser contains the current user, if there is one.
-//    Auth.auth().currentUser.email contains the userID (for email/password)
-
-
+        if (!validEmail) {
+            controller.message = "Enter a valid email address"
+            present(controller, animated: true)
+            
+        } else if (!validPassword) {
+            controller.message = "Password of at least 6 characters"
+            present(controller, animated: true)
+            
+        } else if (!passwordsMatch) {
+            controller.message = "Passwords do not match"
+            present(controller, animated: true)
+        }
+        
+        if (validPassword && validEmail && passwordsMatch) {
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) {
+                (authResult,error) in
+                if let error = error as NSError? {
+                    print("Error creating user: \(error.localizedDescription)")
+                    controller.message = "Error creating user"
+                    self.present(controller, animated: true)
+                } else {
+                    self.performSegue(withIdentifier: "SignupSegue", sender: self)
+                    self.emailTextField.text = nil
+                    self.passwordTextField.text = nil
+                }
+            }
+        }
+    }
 }
