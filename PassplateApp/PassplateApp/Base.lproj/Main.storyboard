@@ -299,7 +299,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
                                 <connections>
                                     <action selector="signinButtonPressed:" destination="G9G-rz-EEK" eventType="touchUpInside" id="Hin-1o-3Td"/>
-                                    <segue destination="0ql-WO-I2r" kind="presentation" identifier="SigninSegue" modalPresentationStyle="fullScreen" id="Rez-Mu-kj0"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="SigninSegue" id="rCh-dq-Hj7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuT-zd-cVn">
@@ -444,7 +444,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign up"/>
                                 <connections>
-                                    <segue destination="0ql-WO-I2r" kind="showDetail" identifier="SignupSegue" id="trG-jq-PBL"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="SignupSegue" id="mfm-tW-Jga"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Accept terms &amp; conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-SY-Xt4">
@@ -486,7 +486,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="w5X-u3-ovF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bAc-wc-Wlw">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -500,7 +500,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="trG-jq-PBL"/>
+        <segue reference="rCh-dq-Hj7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
