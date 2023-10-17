@@ -15,7 +15,7 @@ Anne-Marie Prosper
 
 Faiza Rahman
 - Home Screen
-- Design a basic homepage layout in Interface Builder featuring:
+- Designed a basic homepage layout in Interface Builder featuring:
   - Placeholder for the interactive world map.
   - Search bar component.
   - Placeholder for the favorites icon.
