@@ -17,6 +17,7 @@ Trent Ho
 
 Anne-Marie Prosper
 - User Signup & Login screen
+- Added segues to transition from screens to home screen upon successful login.
 - Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
   - Added alert error messages whenever signin or signup is unsuccessful.
 
