@@ -12,8 +12,9 @@ Trent Ho
   - Added Placeholder segues and screens for the favorites and upload recipe sections.
 
 Anne-Marie Prosper
-- User Signup/Login screen
-- Implemented basic signup/login functionality using Firebase email authentication 
+- User Signup & Login screen
+- Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
+  - Added alert error messages whenever signin or signup is unsuccessful.
 
 
 Faiza Rahman
