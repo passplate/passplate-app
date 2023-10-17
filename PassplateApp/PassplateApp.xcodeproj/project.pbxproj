@@ -13,6 +13,12 @@
 		8501102D2ACF43A60068A749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8501102B2ACF43A60068A749 /* Main.storyboard */; };
 		8501102F2ACF43A70068A749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8501102E2ACF43A70068A749 /* Assets.xcassets */; };
 		850110322ACF43A70068A749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850110302ACF43A70068A749 /* LaunchScreen.storyboard */; };
+		857A89C52ADDFB64000B40DE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89C42ADDFB63000B40DE /* SearchViewController.swift */; };
+		857A89C72ADDFB88000B40DE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89C62ADDFB88000B40DE /* Recipe.swift */; };
+		857A89C92ADDFBA0000B40DE /* FullRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89C82ADDFBA0000B40DE /* FullRecipe.swift */; };
+		857A89CB2ADDFBC3000B40DE /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89CA2ADDFBC3000B40DE /* Recipes.swift */; };
+		857A89CD2ADDFC2E000B40DE /* RecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89CC2ADDFC2D000B40DE /* RecipeResponse.swift */; };
+		857A89CF2ADDFC3F000B40DE /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */; };
 		904527212AD59AD600EC3736 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 904527202AD59AD600EC3736 /* FirebaseAppCheck */; };
 		904527232AD59AD600EC3736 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 904527222AD59AD600EC3736 /* FirebaseAppDistribution-Beta */; };
 		904527252AD59AD600EC3736 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 904527242AD59AD600EC3736 /* FirebaseAuth */; };
@@ -41,6 +47,12 @@
 		8501102E2ACF43A70068A749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		850110312ACF43A70068A749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		850110332ACF43A70068A749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		857A89C42ADDFB63000B40DE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		857A89C62ADDFB88000B40DE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		857A89C82ADDFBA0000B40DE /* FullRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRecipe.swift; sourceTree = "<group>"; };
+		857A89CA2ADDFBC3000B40DE /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		857A89CC2ADDFC2D000B40DE /* RecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeResponse.swift; sourceTree = "<group>"; };
+		857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		90DB7D982AD7A6470038F36D /* PassplateApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PassplateApp.entitlements; sourceTree = "<group>"; };
 		90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +109,12 @@
 				90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */,
 				850110292ACF43A60068A749 /* ViewController.swift */,
 				8501102B2ACF43A60068A749 /* Main.storyboard */,
+				857A89C42ADDFB63000B40DE /* SearchViewController.swift */,
+				857A89CC2ADDFC2D000B40DE /* RecipeResponse.swift */,
+				857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */,
+				857A89C62ADDFB88000B40DE /* Recipe.swift */,
+				857A89C82ADDFBA0000B40DE /* FullRecipe.swift */,
+				857A89CA2ADDFBC3000B40DE /* Recipes.swift */,
 				90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */,
 				8501102E2ACF43A70068A749 /* Assets.xcassets */,
 				850110302ACF43A70068A749 /* LaunchScreen.storyboard */,
@@ -197,10 +215,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857A89C52ADDFB64000B40DE /* SearchViewController.swift in Sources */,
 				90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */,
+				857A89C72ADDFB88000B40DE /* Recipe.swift in Sources */,
 				8501102A2ACF43A60068A749 /* ViewController.swift in Sources */,
+				857A89CD2ADDFC2E000B40DE /* RecipeResponse.swift in Sources */,
+				857A89CF2ADDFC3F000B40DE /* RecipeViewController.swift in Sources */,
 				90DB7D9E2AD7B5F70038F36D /* SignupViewController.swift in Sources */,
 				850110262ACF43A60068A749 /* AppDelegate.swift in Sources */,
+				857A89C92ADDFBA0000B40DE /* FullRecipe.swift in Sources */,
+				857A89CB2ADDFBC3000B40DE /* Recipes.swift in Sources */,
 				850110282ACF43A60068A749 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
