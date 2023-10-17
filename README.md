@@ -2,8 +2,12 @@
 
 Contributions:
 
-Summer Ely 
-- 
+Summer Ely
+- Search page and recipe page
+- Implemented a search page with a search bar component where you can type in a nationality (eg. "American") and it will call the [MealDB API](https://www.themealdb.com/api.php) which will return a list of recipes that are displayed in a table view.
+- Implemented a recipe page that appears when a recipe is selected from the tableview. Recipe name, image, category, ingredients, and instructions are displayed here.
+- Created "Recipe", "Recipes", "FullRecipe", and "RecipeResponse" classes to help with parsing API responses and storing data about recipes. 
+- Added segues from home page to search page and search page to individual recipe page.
 
 Trent Ho
 - Navigation Tab Bar
