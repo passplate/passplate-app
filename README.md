@@ -31,4 +31,4 @@ Faiza Rahman (15%)
 
 
 Deviations:
-- The search results only show the recipe image and recipe name instead of also including a description and a cook time like in our design. Only the image and name are displayed on the search results page because those are the only values the API call returns.
+- On the search results screen we planned to display: the recipe image, name, description and cook time; however, the screen is only able to display the recipe image and name. This reduction is because the recipe description and cook time are not retrievable through the API call.
