@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G9G-rz-EEK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G9G-rz-EEK">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -39,22 +38,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vdv-Ua-hpe">
-                                <rect key="frame" x="0.0" y="43" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Passplate" id="WbD-WP-gii">
-                                        <rightBarButtonItems>
-                                            <barButtonItem title="Item" id="CFU-uK-gNo">
-                                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="Scn-dM-mcE"/>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="J6B-OD-e69">
-                                <rect key="frame" x="0.0" y="87" width="393" height="44"/>
+                                <rect key="frame" x="0.0" y="99" width="312" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -62,13 +47,13 @@
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzx-Bs-UJx">
-                                <rect key="frame" x="306" y="131" width="50" height="35"/>
+                                <rect key="frame" x="312" y="104" width="50" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease.circle.fill" catalog="system" title=""/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4e-np-PbP">
-                                <rect key="frame" x="337" y="131" width="48" height="35"/>
+                                <rect key="frame" x="345" y="104" width="48" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system" title=""/>
@@ -81,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYE-Nn-vV2">
-                                <rect key="frame" x="0.0" y="169" width="393" height="598"/>
+                                <rect key="frame" x="0.0" y="159" width="393" height="608"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
@@ -89,7 +74,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GPY-Zk-z2z"/>
+                    <navigationItem key="navigationItem" id="GPY-Zk-z2z">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="Scn-dM-mcE"/>
+                            <barButtonItem title="Item" id="CFU-uK-gNo">
+                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="J6B-OD-e69" id="g9V-Cv-ya3"/>
                         <segue destination="d4R-qW-oB6" kind="show" identifier="SearchSegueIdentifier" id="4XU-Rt-e7P"/>
@@ -97,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1440.4580152671756" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="1403.8167938931297" y="1850.7042253521129"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="wbj-Gb-iyo">
@@ -133,25 +125,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vh9-ON-nR5">
-                                <rect key="frame" x="0.0" y="44" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Passplate" id="fzs-4E-Cds">
-                                        <rightBarButtonItems>
-                                            <barButtonItem title="Item" id="w05-Le-Aqa">
-                                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="uER-MF-7eu"/>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gZN-EB-4Ar"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KUE-tp-cQQ"/>
+                    <navigationItem key="navigationItem" id="KUE-tp-cQQ">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="w05-Le-Aqa">
+                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="uER-MF-7eu"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="VEx-qF-qr2" id="sTm-Np-71s"/>
                         <outlet property="tableView" destination="jdJ-2c-bLk" id="8SH-Xe-zCP"/>
@@ -172,16 +157,6 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26L-YG-Wuf">
                                 <rect key="frame" x="0.0" y="45" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Passplate" id="6BV-9m-WI4">
-                                        <rightBarButtonItems>
-                                            <barButtonItem title="Item" id="XmM-HP-YuY">
-                                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                                            </barButtonItem>
-                                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="ljV-Bz-9Hq"/>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSq-cP-Hoh">
                                 <rect key="frame" x="16" y="105" width="361" height="21"/>
@@ -235,7 +210,14 @@
                         <viewLayoutGuide key="safeArea" id="o0U-ly-ts5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XPW-nA-7sG"/>
+                    <navigationItem key="navigationItem" id="XPW-nA-7sG">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="XmM-HP-YuY">
+                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="ljV-Bz-9Hq"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="MO6-m0-72n" id="BlM-si-0lv"/>
                         <outlet property="instructionsLabel" destination="dRN-Lg-iqb" id="KAm-Qi-wIo"/>
@@ -549,13 +531,13 @@
         <image name="star_corrected_color" width="24" height="24"/>
         <image name="upload_corrected_color" width="24" height="24"/>
         <systemColor name="placeholderTextColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
