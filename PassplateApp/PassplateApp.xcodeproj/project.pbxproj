@@ -14,6 +14,8 @@
 		8501102D2ACF43A60068A749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8501102B2ACF43A60068A749 /* Main.storyboard */; };
 		8501102F2ACF43A70068A749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8501102E2ACF43A70068A749 /* Assets.xcassets */; };
 		850110322ACF43A70068A749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850110302ACF43A70068A749 /* LaunchScreen.storyboard */; };
+		8565D6052AF84D2A005AA9D7 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565D6042AF84D2A005AA9D7 /* RecipeTableViewCell.swift */; };
+		8565D6072AF85056005AA9D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 8565D6062AF85056005AA9D7 /* fonts */; };
 		857A89C52ADDFB64000B40DE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89C42ADDFB63000B40DE /* SearchViewController.swift */; };
 		857A89C72ADDFB88000B40DE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89C62ADDFB88000B40DE /* Recipe.swift */; };
 		857A89C92ADDFBA0000B40DE /* FullRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89C82ADDFBA0000B40DE /* FullRecipe.swift */; };
@@ -49,6 +51,8 @@
 		8501102E2ACF43A70068A749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		850110312ACF43A70068A749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		850110332ACF43A70068A749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8565D6042AF84D2A005AA9D7 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		8565D6062AF85056005AA9D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		857A89C42ADDFB63000B40DE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		857A89C62ADDFB88000B40DE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		857A89C82ADDFBA0000B40DE /* FullRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRecipe.swift; sourceTree = "<group>"; };
@@ -105,12 +109,14 @@
 		850110242ACF43A60068A749 /* PassplateApp */ = {
 			isa = PBXGroup;
 			children = (
+				8565D6062AF85056005AA9D7 /* fonts */,
 				90DB7D982AD7A6470038F36D /* PassplateApp.entitlements */,
 				850110252ACF43A60068A749 /* AppDelegate.swift */,
 				850110272ACF43A60068A749 /* SceneDelegate.swift */,
 				90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */,
 				850110292ACF43A60068A749 /* ViewController.swift */,
 				8501102B2ACF43A60068A749 /* Main.storyboard */,
+				8565D6042AF84D2A005AA9D7 /* RecipeTableViewCell.swift */,
 				857A89C42ADDFB63000B40DE /* SearchViewController.swift */,
 				857A89CC2ADDFC2D000B40DE /* RecipeResponse.swift */,
 				857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */,
@@ -205,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				850110322ACF43A70068A749 /* LaunchScreen.storyboard in Resources */,
+				8565D6072AF85056005AA9D7 /* fonts in Resources */,
 				90DB7D9A2AD7AFB40038F36D /* GoogleService-Info.plist in Resources */,
 				8501102F2ACF43A70068A749 /* Assets.xcassets in Resources */,
 				8501102D2ACF43A60068A749 /* Main.storyboard in Resources */,
@@ -221,6 +228,7 @@
 				857A89C52ADDFB64000B40DE /* SearchViewController.swift in Sources */,
 				90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */,
 				857A89C72ADDFB88000B40DE /* Recipe.swift in Sources */,
+				8565D6052AF84D2A005AA9D7 /* RecipeTableViewCell.swift in Sources */,
 				8501102A2ACF43A60068A749 /* ViewController.swift in Sources */,
 				857A89CD2ADDFC2E000B40DE /* RecipeResponse.swift in Sources */,
 				857A89CF2ADDFC3F000B40DE /* RecipeViewController.swift in Sources */,

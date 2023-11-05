@@ -82,24 +82,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipes.meals.count
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 150.0
     }
     
+    // Displays recipe objects in custom cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: recipeCellIdentifier, for: indexPath as IndexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: recipeCellIdentifier, for: indexPath as IndexPath) as! RecipeTableViewCell
         
         let row = indexPath.row
-        cell.textLabel?.text = recipes.meals[row].strMeal
-        cell.textLabel?.numberOfLines = 0
-        cell.imageView?.contentMode = .scaleAspectFit
+        cell.recipeNameLabel?.text = recipes.meals[row].strMeal
+        cell.recipeNameLabel?.numberOfLines = 0
+        cell.recipeImageView?.contentMode = .scaleAspectFit
         
         if let imageURL = URL(string: recipes.meals[row].strMealThumb) {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        cell.imageView?.image = image
+                        cell.recipeImageView?.image = image
                         cell.setNeedsLayout()
                     }
                 }
@@ -108,6 +109,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         
         return cell
     }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 10
+//    }
+
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        headerView.backgroundColor = UIColor.clear
+//        return headerView
+//    }
+
 
     
   }

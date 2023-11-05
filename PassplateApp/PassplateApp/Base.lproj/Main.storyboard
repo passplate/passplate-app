@@ -10,6 +10,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="lXW-bC-jT8">
@@ -82,10 +87,10 @@
                                     <segue destination="wcF-EF-AoG" kind="show" id="GOv-nk-VYf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="CFU-uK-gNo">
-                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                            </barButtonItem>
                         </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="CFU-uK-gNo">
+                            <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="J6B-OD-e69" id="g9V-Cv-ya3"/>
@@ -128,19 +133,67 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="FTC-rm-txE"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jdJ-2c-bLk">
-                                <rect key="frame" x="16" y="173" width="361" height="535"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jdJ-2c-bLk">
+                                <rect key="frame" x="16" y="173" width="361" height="610"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" id="hRW-7s-GzU">
-                                        <rect key="frame" x="0.0" y="50" width="361" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="174" id="hRW-7s-GzU" customClass="RecipeTableViewCell" customModule="PassplateApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="174"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hRW-7s-GzU" id="tbv-qq-tnv">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ft-W5-Y1x">
+                                                    <rect key="frame" x="0.0" y="24" width="361" height="111"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dc-Rd-rNE">
+                                                            <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="153" id="Ept-cA-hVY" customClass="RecipeTableViewCell" customModule="PassplateApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="-30" width="361" height="153"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ept-cA-hVY" id="cea-YW-uOC">
+                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="153"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyz-8j-9g4">
+                                                                        <rect key="frame" x="0.0" y="11" width="361" height="122"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-Qc-Kjh">
+                                                                                <rect key="frame" x="8" y="6" width="111" height="111"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDP-4H-WbF">
+                                                                                <rect key="frame" x="127" y="47" width="218" height="29"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </view>
+                                                                </subviews>
+                                                            </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="containerView" destination="Pyz-8j-9g4" id="jU5-hX-geo"/>
+                                                                <outlet property="recipeImageView" destination="RAl-Qc-Kjh" id="fdA-d2-KS4"/>
+                                                            </connections>
+                                                        </tableViewCell>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="containerView" destination="tbv-qq-tnv" id="cPY-wd-R3v"/>
+                                            <outlet property="recipeImageView" destination="RAl-Qc-Kjh" id="lew-xa-7kY"/>
+                                            <outlet property="recipeNameLabel" destination="PDP-4H-WbF" id="3pW-vg-rWs"/>
                                             <segue destination="niL-8a-Ga7" kind="show" identifier="RecipeSegueIdentifier" id="DOa-QP-JWK"/>
                                         </connections>
                                     </tableViewCell>
@@ -151,12 +204,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="KUE-tp-cQQ">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" id="w05-Le-Aqa">
-                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="uER-MF-7eu"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="uER-MF-7eu"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="VEx-qF-qr2" id="sTm-Np-71s"/>
@@ -232,12 +280,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="XPW-nA-7sG">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" id="XmM-HP-YuY">
-                                <imageReference key="image" image="person.crop.circle.fill" catalog="system" symbolScale="large" renderingMode="template"/>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="gearshape.fill" catalog="system" id="ljV-Bz-9Hq"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="ljV-Bz-9Hq"/>
                     </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="MO6-m0-72n" id="BlM-si-0lv"/>
