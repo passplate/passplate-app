@@ -23,6 +23,26 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         allergenTableView.dataSource = self
         allergenTableView.delegate = self
         nameLabel.text = name
+        fetchUserData()
+    }
+    
+    
+    func fetchUserData() {
+        let uid = Auth.auth().currentUser?.uid
+        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user data from Firestore: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                // User document exists, and you can access its data
+                if let userData = document.data() {
+                    // Access specific fields from userData
+                    self.allergyList = (userData["allergies"] as? [String])!
+                    self.allergenTableView.reloadData()
+                }
+            } else {
+                print("User document does not exist in Firestore.")
+            }
+        }
     }
 
     @IBAction func addAllergen(_ sender: Any) {
@@ -50,8 +70,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self.allergenTableView.reloadData()
             let uid = Auth.auth().currentUser?.uid
             let updatedData: [String: Any] = [
-                "name": self.name!,           // Replace `newName` with the updated name
-                "allergies": self.allergyList           // Replace `newEmail` with the updated email
+                "name": self.name!,
+                "allergies": self.allergyList
             ]
             Firestore.firestore().collection("users").document(uid!).updateData(updatedData)
             
@@ -80,8 +100,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             
             let uid = Auth.auth().currentUser?.uid
             let updatedData: [String: Any] = [
-                "name": self.name!,           // Replace `newName` with the updated name
-                "allergies": self.allergyList           // Replace `newEmail` with the updated email
+                "name": self.name!,
+                "allergies": self.allergyList
             ]
             Firestore.firestore().collection("users").document(uid!).updateData(updatedData)
             

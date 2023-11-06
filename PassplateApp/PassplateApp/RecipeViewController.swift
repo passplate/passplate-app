@@ -21,6 +21,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     var userAllergens: [String] = []
     var userName: String = ""
     let settingsSegueIdentifier = "RecipeToSettingsSegue"
+//    let
 
 
     @IBOutlet weak var recipeLabel: UILabel!
@@ -61,6 +62,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
             destination.allergyList = userAllergens
         }
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        <#code#>
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
