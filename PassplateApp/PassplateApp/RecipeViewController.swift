@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class RecipeViewController: UIViewController, UITableViewDataSource {
     
     var recipe: Recipe
     var fullRecipe: FullRecipe
+    
     // Measurement, ingredient
     var ingredients: [(String, String)] = []
-//    var userAllergens
+
+    var allergenIngredients: [String] = []
+    var userAllergens: [String] = []
 
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -27,6 +32,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         recipeLabel.text = recipe.strMeal
+        fetchUserAllergies()
+
         // Load image into UIImageView
         if let imageURL = URL(string: recipe.strMealThumb) {
             DispatchQueue.global().async {
@@ -40,6 +47,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         
         fetchRecipeResults(idMeal: recipe.idMeal)
         categoryLabel.text = fullRecipe.strCategory
+        // create and present alert if allergy list contains any of the user's allergies
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,6 +94,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
                                 if let property = property, property == ingredientKey, let ingredient = value as? String,
                                    let measureValue = mirror.children.first(where: { ($0.label) == measureKey })?.value as? String,
                                    !ingredient.isEmpty && !measureValue.isEmpty {
+                                    // need to have a way to account for plurals (ex: tomatoes vs tomato)
+                                    if self.userAllergens.contains(ingredient) {
+                                        self.allergenIngredients.append(ingredient)
+                                    }
                                     self.ingredients.append((measureValue, ingredient))
                                 }
                             }
@@ -131,6 +143,30 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     }
 
 
+    func fetchUserAllergies() {
+        let uid = Auth.auth().currentUser?.uid
+//        Firestore.firestore().collection("users").document(uid!).get
+        
+//        db.collection('users').doc(userId).collection('allergies').get()
+//          .then((querySnapshot) => {
+//            querySnapshot.forEach((doc) => {
+//              const allergyData = doc.data();
+//              console.log('Allergy data: ', allergyData);
+//            });
+//          })
+//          .catch((error) => {
+//            console.error('Error getting allergies: ', error);
+//          });
+//
+//        ref.child("users/\(uid)/username").getData(completion:  { error, snapshot in
+//          guard error == nil else {
+//            print(error!.localizedDescription)
+//            return;
+//          }
+//          let userName = snapshot.value as? String ?? "Unknown";
+//        });
+
+    }
     
     required init?(coder aDecoder: NSCoder) {
         self.recipe = Recipe(idMeal: "", strMeal: "", strMealThumb: "")

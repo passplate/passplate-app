@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class SignupViewController: UIViewController {
@@ -14,9 +15,6 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
-    // SignupSegue
-    // SigninFromSignup
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.isSecureTextEntry = true
@@ -24,15 +22,6 @@ class SignupViewController: UIViewController {
         
         confirmPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.textContentType = .oneTimeCode
-
-//        Auth.auth().addStateDidChangeListener() {
-//            (auth, user) in
-//            if user != nil {
-//                self.performSegue(withIdentifier: "SignupSegue", sender: self)
-//                self.emailTextField.text = nil
-//                self.passwordTextField.text = nil
-//            }
-//        }
 
     }
     
@@ -96,6 +85,13 @@ class SignupViewController: UIViewController {
                     controller.message = "Error creating user"
                     self.present(controller, animated: true)
                 } else {
+                    let uid = authResult?.user.uid
+                    let allergyList: [String] = []
+                    let userData: [String: Any] = [
+                        "name": self.nameTextField.text!,
+                        "allergies": allergyList
+                    ]
+                    Firestore.firestore().collection("users").document(uid!).setData(userData)
                     self.performSegue(withIdentifier: "SignupSegue", sender: self)
                     self.emailTextField.text = nil
                     self.passwordTextField.text = nil

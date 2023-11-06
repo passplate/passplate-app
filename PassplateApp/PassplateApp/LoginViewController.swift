@@ -1,4 +1,4 @@
-//
+///Users/annieprosper/Documents/passplate-app/PassplateApp/PassplateApp/SignupViewController.swift
 //  LoginViewController.swift
 //  PassplateApp
 //
@@ -16,16 +16,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .oneTimeCode
-
-        
-//        Auth.auth().addStateDidChangeListener() {
-//            (auth, user) in
-//            if user != nil {
-//                self.performSegue(withIdentifier: "SigninSegue", sender: self)
-//                self.emailTextField.text = nil
-//                self.passwordTextField.text = nil
-//            }
-//        }
         
     }
     
