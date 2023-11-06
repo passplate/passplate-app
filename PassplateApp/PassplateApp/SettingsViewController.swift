@@ -21,10 +21,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         allergenTableView.dataSource = self
         allergenTableView.delegate = self
-        fetchUserAllergies()
         nameLabel.text = name
-        allergenTableView.reloadData()
-            
     }
 
     @IBAction func addAllergen(_ sender: Any) {
@@ -46,29 +43,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
        
     }
-    
-    func fetchUserAllergies() {
-        let uid = Auth.auth().currentUser?.uid
-        
-        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
-            if let error = error {
-                print("Error fetching user data from Firestore: \(error.localizedDescription)")
-            } else if let document = document, document.exists {
-                // User document exists, and you can access its data
-                if let userData = document.data() {
-                    // Access specific fields from userData
-                    self.name = userData["name"] as? String
-                    self.allergyList = (userData["allergies"] as? [String])!
-                    print(self.name)
-                    print(self.allergyList)
-    
-                }
-            } else {
-                print("User document does not exist in Firestore.")
-            }
-        }
 
-    }
     
     
     

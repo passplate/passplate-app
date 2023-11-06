@@ -19,6 +19,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
 
     var allergenIngredients: [String] = []
     var userAllergens: [String] = []
+    var userName: String = ""
+    let settingsSegueIdentifier = "RecipeToSettingsSegue"
+
+    
 
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -32,7 +36,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         recipeLabel.text = recipe.strMeal
-        fetchUserAllergies()
+        fetchUserData()
 
         // Load image into UIImageView
         if let imageURL = URL(string: recipe.strMealThumb) {
@@ -48,6 +52,15 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         fetchRecipeResults(idMeal: recipe.idMeal)
         categoryLabel.text = fullRecipe.strCategory
         // create and present alert if allergy list contains any of the user's allergies
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == settingsSegueIdentifier,
+           let destination = segue.destination as? SettingsViewController {
+            // When the user goes to create a new pizza, these fields should not be populated.
+            destination.name = userName
+            destination.allergyList = userAllergens
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -143,30 +156,24 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     }
 
 
-    func fetchUserAllergies() {
+    func fetchUserData() {
         let uid = Auth.auth().currentUser?.uid
-//        Firestore.firestore().collection("users").document(uid!).get
-        
-//        db.collection('users').doc(userId).collection('allergies').get()
-//          .then((querySnapshot) => {
-//            querySnapshot.forEach((doc) => {
-//              const allergyData = doc.data();
-//              console.log('Allergy data: ', allergyData);
-//            });
-//          })
-//          .catch((error) => {
-//            console.error('Error getting allergies: ', error);
-//          });
-//
-//        ref.child("users/\(uid)/username").getData(completion:  { error, snapshot in
-//          guard error == nil else {
-//            print(error!.localizedDescription)
-//            return;
-//          }
-//          let userName = snapshot.value as? String ?? "Unknown";
-//        });
-
+        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user data from Firestore: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                // User document exists, and you can access its data
+                if let userData = document.data() {
+                    // Access specific fields from userData
+                    self.userName = (userData["name"] as? String)!
+                    self.userAllergens = (userData["allergies"] as? [String])!
+                }
+            } else {
+                print("User document does not exist in Firestore.")
+            }
+        }
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         self.recipe = Recipe(idMeal: "", strMeal: "", strMealThumb: "")

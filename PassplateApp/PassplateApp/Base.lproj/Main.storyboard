@@ -81,7 +81,7 @@
                     <navigationItem key="navigationItem" id="GPY-Zk-z2z">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="wsb-W8-eOs">
                             <connections>
-                                <segue destination="wcF-EF-AoG" kind="show" id="cLL-dm-cIQ"/>
+                                <segue destination="wcF-EF-AoG" kind="show" identifier="HomeToSettingsSegue" id="cLL-dm-cIQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -280,7 +280,7 @@
                     <navigationItem key="navigationItem" id="KUE-tp-cQQ">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="uER-MF-7eu">
                             <connections>
-                                <segue destination="wcF-EF-AoG" kind="show" id="87a-s4-reD"/>
+                                <segue destination="wcF-EF-AoG" kind="show" identifier="SearchToSettingsSegue" id="87a-s4-reD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -360,7 +360,7 @@
                     <navigationItem key="navigationItem" id="XPW-nA-7sG">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="ljV-Bz-9Hq">
                             <connections>
-                                <segue destination="wcF-EF-AoG" kind="show" id="WSY-W3-z0T"/>
+                                <segue destination="wcF-EF-AoG" kind="show" identifier="RecipeToSettingsSegue" id="WSY-W3-z0T"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -7,10 +7,15 @@
 
 import UIKit
 import MapKit
+import Firebase
+import FirebaseAuth
 
 class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var mapView: MKMapView!
+    let settingsSegueIdentifier = "HomeToSettingsSegue"
+    var userAllergens: [String] = []
+    var userName: String = ""
     
     let countryToLocationMap = [
         "American": "New York, USA",
@@ -46,7 +51,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         mapView.delegate = self
-
+        fetchUserData()
         // Add annotations for countries on the map
         for (country, location) in countryToLocationMap {
             addAnnotationForCountry(country, atLocation: location)
@@ -92,6 +97,30 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 //                if let searchQuery = sender as? String {
                     destinationVC.inputSearchText = searchBar.text ?? ""
 //                }
+            }
+        }
+        if segue.identifier == settingsSegueIdentifier,
+           let destination = segue.destination as? SettingsViewController {
+            // When the user goes to create a new pizza, these fields should not be populated.
+            destination.name = userName
+            destination.allergyList = userAllergens
+        }
+    }
+    
+    func fetchUserData() {
+        let uid = Auth.auth().currentUser?.uid
+        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user data from Firestore: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                // User document exists, and you can access its data
+                if let userData = document.data() {
+                    // Access specific fields from userData
+                    self.userName = (userData["name"] as? String)!
+                    self.userAllergens = (userData["allergies"] as? [String])!
+                }
+            } else {
+                print("User document does not exist in Firestore.")
             }
         }
     }

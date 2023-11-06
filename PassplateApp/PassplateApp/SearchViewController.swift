@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate,  UITableViewDataSource {
     
@@ -15,6 +17,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     var recipes: Recipes
     let recipeCellIdentifier = "RecipeCell"
     let recipeSegueIdentifier = "RecipeSegueIdentifier"
+    let settingsSegueIdentifier = "SearchToSettingsSegue"
+    var userAllergens: [String] = []
+    var userName: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +28,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         searchBar.delegate = self
         searchBar.text = inputSearchText
         fetchSearchResults(searchVal: searchBar.text!)
+        fetchUserData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -76,6 +82,31 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
            let recipeIndex = tableView.indexPathForSelectedRow?.row
         {
             destination.recipe = recipes.meals[recipeIndex]
+        }
+        if segue.identifier == settingsSegueIdentifier,
+           let destination = segue.destination as? SettingsViewController {
+            // When the user goes to create a new pizza, these fields should not be populated.
+            destination.name = userName
+            destination.allergyList = userAllergens
+        }
+
+    }
+    
+    func fetchUserData() {
+        let uid = Auth.auth().currentUser?.uid
+        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user data from Firestore: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                // User document exists, and you can access its data
+                if let userData = document.data() {
+                    // Access specific fields from userData
+                    self.userName = (userData["name"] as? String)!
+                    self.userAllergens = (userData["allergies"] as? [String])!
+                }
+            } else {
+                print("User document does not exist in Firestore.")
+            }
         }
     }
     
