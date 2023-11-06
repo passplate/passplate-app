@@ -124,11 +124,11 @@
 				857A89C82ADDFBA0000B40DE /* FullRecipe.swift */,
 				857A89CA2ADDFBC3000B40DE /* Recipes.swift */,
 				90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */,
+				1B9C21F02AF76EED0024794E /* SettingsViewController.swift */,
 				8501102E2ACF43A70068A749 /* Assets.xcassets */,
 				850110302ACF43A70068A749 /* LaunchScreen.storyboard */,
 				90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */,
 				850110332ACF43A70068A749 /* Info.plist */,
-				1B9C21F02AF76EED0024794E /* SettingsViewController.swift */,
 			);
 			path = PassplateApp;
 			sourceTree = "<group>";

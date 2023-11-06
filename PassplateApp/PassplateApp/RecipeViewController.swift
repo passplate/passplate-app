@@ -13,6 +13,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     var fullRecipe: FullRecipe
     // Measurement, ingredient
     var ingredients: [(String, String)] = []
+//    var userAllergens
 
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
