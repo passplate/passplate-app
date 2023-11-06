@@ -22,7 +22,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     var userName: String = ""
     let settingsSegueIdentifier = "RecipeToSettingsSegue"
 
-    
 
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -108,7 +107,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
                                    let measureValue = mirror.children.first(where: { ($0.label) == measureKey })?.value as? String,
                                    !ingredient.isEmpty && !measureValue.isEmpty {
                                     // need to have a way to account for plurals (ex: tomatoes vs tomato)
-                                    if self.userAllergens.contains(ingredient) {
+                                    if self.userAllergens.contains(ingredient.lowercased()) {
                                         self.allergenIngredients.append(ingredient)
                                     }
                                     self.ingredients.append((measureValue, ingredient))
@@ -127,6 +126,19 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
                             self.tableView.reloadData()
                             print("self.ingredients")
                             print(self.ingredients)
+                            
+                            print("allergen count: \(self.allergenIngredients.count)")
+                            if !self.allergenIngredients.isEmpty {
+                                let controller = UIAlertController(
+                                title: "Allergens present",
+                                message: "recipe contains: \(self.allergenIngredients.joined(separator: ","))",
+                                preferredStyle: .alert
+                                )
+
+                                controller.addAction(UIAlertAction(title: "Ok", style: .default))
+                                print("should reach here")
+                                self.present(controller, animated: true)
+                            }
                             
                         }
                     } else {
@@ -149,6 +161,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
         
         let ingredientMeasure = ingredients[indexPath.row]
+        if allergenIngredients.contains(ingredientMeasure.1) {
+            cell.textLabel?.textColor = .red
+        }
         cell.textLabel?.text = "\(ingredientMeasure.0) \(ingredientMeasure.1)"
 //        cell.detailTextLabel?.text = ingredientMeasure.1
         
