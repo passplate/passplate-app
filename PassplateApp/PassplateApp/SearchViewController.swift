@@ -21,7 +21,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     var userAllergens: [String] = []
     var userName: String = ""
     var filteredMeals: [Recipe] = []
+    let dietaryRestrictions = DietaryRestrictions.shared.restrictions
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -150,34 +152,40 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
 
     func mealContainsAllergens(_ meal: FullRecipe) -> (containsAllergens: Bool, detectedAllergens: [String]) {
         var detectedAllergens: [String] = []
-        let ingredientStrings = [
+        let ingredients = [
             meal.strIngredient1, meal.strIngredient2, meal.strIngredient3, meal.strIngredient4,
             meal.strIngredient5, meal.strIngredient6, meal.strIngredient7, meal.strIngredient8,
             meal.strIngredient9, meal.strIngredient10, meal.strIngredient11, meal.strIngredient12,
             meal.strIngredient13, meal.strIngredient14, meal.strIngredient15, meal.strIngredient16,
             meal.strIngredient17, meal.strIngredient18, meal.strIngredient19
-        ]
+        ].compactMap{$0?.lowercased()}
 
-        let ingredients = ingredientStrings.compactMap { $0?.lowercased() }
-        let allergenWords = userAllergens.map { singularize($0.lowercased()) }
-
-        for ingredient in ingredients {
-            let words = ingredient.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: .whitespaces)
-            for word in words {
-                let singularWord = singularize(word)
-                if allergenWords.contains(singularWord) {
-                    detectedAllergens.append(singularWord)
+        for allergen in userAllergens {
+            // Check if the allergen is a dietary restriction group
+            if let restrictionGroup = DietaryRestrictions.shared.restrictions[allergen] {
+                // Check if any ingredient is in the dietary restriction group
+                for ingredient in ingredients {
+                    if restrictionGroup.contains(where: ingredient.contains) {
+                        detectedAllergens.append(ingredient)
+                        break // Found an allergen, no need to check further
+                    }
+                }
+            } else {
+                // It's a specific allergen, not a group
+                if ingredients.contains(where: { ingredient in
+                    ingredient.contains(allergen.lowercased())
+                }) {
+                    detectedAllergens.append(allergen)
                 }
             }
         }
 
-        return (containsAllergens: !detectedAllergens.isEmpty, detectedAllergens: detectedAllergens)
+        return (!detectedAllergens.isEmpty, detectedAllergens)
     }
+
 
     func singularize(_ word: String) -> String {
         // This is a naive implementation and works on simple cases.
-        // English pluralization rules are complex, and for a complete solution,
-        // you should use a library that can handle all the edge cases.
         if word.lowercased().hasSuffix("ies") {
             let index = word.index(word.endIndex, offsetBy: -3)
             return String(word[..<index]) + "y"

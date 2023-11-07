@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BBED5E82AFAEE78003A193C /* DietaryRestrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBED5E72AFAEE78003A193C /* DietaryRestrictions.swift */; };
 		850110262ACF43A60068A749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110252ACF43A60068A749 /* AppDelegate.swift */; };
 		850110282ACF43A60068A749 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110272ACF43A60068A749 /* SceneDelegate.swift */; };
 		8501102A2ACF43A60068A749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850110292ACF43A60068A749 /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		1B9C21F02AF76EED0024794E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1BBED5E72AFAEE78003A193C /* DietaryRestrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryRestrictions.swift; sourceTree = "<group>"; };
 		850110222ACF43A60068A749 /* PassplateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassplateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850110252ACF43A60068A749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		850110272ACF43A60068A749 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				850110302ACF43A70068A749 /* LaunchScreen.storyboard */,
 				90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */,
 				850110332ACF43A70068A749 /* Info.plist */,
+				1BBED5E72AFAEE78003A193C /* DietaryRestrictions.swift */,
 			);
 			path = PassplateApp;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				857A89C52ADDFB64000B40DE /* SearchViewController.swift in Sources */,
+				1BBED5E82AFAEE78003A193C /* DietaryRestrictions.swift in Sources */,
 				90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */,
 				857A89C72ADDFB88000B40DE /* Recipe.swift in Sources */,
 				8565D6052AF84D2A005AA9D7 /* RecipeTableViewCell.swift in Sources */,
