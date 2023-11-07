@@ -21,7 +21,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
     var userAllergens: [String] = []
     var userName: String = ""
     let settingsSegueIdentifier = "RecipeToSettingsSegue"
-//    let
+    
 
 
     @IBOutlet weak var recipeLabel: UILabel!
@@ -37,6 +37,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         recipeLabel.text = recipe.strMeal
         fetchUserData()
+        
+        recipeImage.layer.cornerRadius = 20
+        recipeImage.clipsToBounds = true
 
         // Load image into UIImageView
         if let imageURL = URL(string: recipe.strMealThumb) {
