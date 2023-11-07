@@ -150,7 +150,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
 
     func mealContainsAllergens(_ meal: FullRecipe) -> (containsAllergens: Bool, detectedAllergens: [String]) {
         var detectedAllergens: [String] = []
-        let ingredients = [
+        let ingredientStrings = [
             meal.strIngredient1, meal.strIngredient2, meal.strIngredient3, meal.strIngredient4,
             meal.strIngredient5, meal.strIngredient6, meal.strIngredient7, meal.strIngredient8,
             meal.strIngredient9, meal.strIngredient10, meal.strIngredient11, meal.strIngredient12,
@@ -158,10 +158,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
             meal.strIngredient17, meal.strIngredient18, meal.strIngredient19
         ]
 
-        for ingredient in ingredients.compactMap({ $0 }) { // Remove nil values
-            for allergen in userAllergens {
-                if ingredient.lowercased().contains(allergen.lowercased()) {
-                    detectedAllergens.append(allergen) // Add the detected allergen to the array
+        let ingredients = ingredientStrings.compactMap { $0?.lowercased() }
+        let allergenWords = userAllergens.map { singularize($0.lowercased()) }
+
+        for ingredient in ingredients {
+            let words = ingredient.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: .whitespaces)
+            for word in words {
+                let singularWord = singularize(word)
+                if allergenWords.contains(singularWord) {
+                    detectedAllergens.append(singularWord)
                 }
             }
         }
@@ -169,7 +174,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         return (containsAllergens: !detectedAllergens.isEmpty, detectedAllergens: detectedAllergens)
     }
 
-    
+    func singularize(_ word: String) -> String {
+        // This is a naive implementation and works on simple cases.
+        // English pluralization rules are complex, and for a complete solution,
+        // you should use a library that can handle all the edge cases.
+        if word.lowercased().hasSuffix("ies") {
+            let index = word.index(word.endIndex, offsetBy: -3)
+            return String(word[..<index]) + "y"
+        } else if word.lowercased().hasSuffix("es") {
+            let index = word.index(word.endIndex, offsetBy: -2)
+            return String(word[..<index])
+        } else if word.last == "s" {
+            return String(word.dropLast())
+        }
+        return word
+    }
 
    
     
