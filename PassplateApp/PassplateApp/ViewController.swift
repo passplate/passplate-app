@@ -65,7 +65,6 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let country = view.annotation?.title,
            let location = countryToLocationMap[country!] {
-            // You've tapped on a country, and now you can search recipes based on the selected location.
             initiateRecipeSearch(forLocation: location)
         }
     }
