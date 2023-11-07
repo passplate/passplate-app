@@ -66,9 +66,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        <#code#>
-//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -79,6 +76,16 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         let screenHeight = UIScreen.main.bounds.size.height
         let contentHeight = max(screenHeight * 0.8, instructionsLabel.frame.origin.y + instructionsLabel.frame.size.height + 16)
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: contentHeight)
+    }
+    
+    func isAllergenSubstring(ingredient: String) -> Bool {
+        var substringFound = false
+        for allergen in userAllergens {
+            if ingredient.contains(allergen) {
+                substringFound = true
+            }
+        }
+        return substringFound
     }
     
     func fetchRecipeResults(idMeal: String) {
@@ -116,6 +123,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
                                    !ingredient.isEmpty && !measureValue.isEmpty {
                                     // need to have a way to account for plurals (ex: tomatoes vs tomato)
                                     if self.userAllergens.contains(ingredient.lowercased()) {
+                                        self.allergenIngredients.append(ingredient)
+                                    } else if self.isAllergenSubstring(ingredient: ingredient.lowercased()) {
                                         self.allergenIngredients.append(ingredient)
                                     }
                                     self.ingredients.append((measureValue, ingredient))
@@ -171,6 +180,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         let ingredientMeasure = ingredients[indexPath.row]
         if allergenIngredients.contains(ingredientMeasure.1) {
             cell.textLabel?.textColor = .red
+        } else {
+            cell.textLabel?.textColor = .black
         }
         cell.textLabel?.text = "\(ingredientMeasure.0) \(ingredientMeasure.1)"
 //        cell.detailTextLabel?.text = ingredientMeasure.1
