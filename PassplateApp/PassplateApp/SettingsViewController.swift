@@ -14,17 +14,27 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet weak var allergenTableView: UITableView!
+    @IBOutlet var darkModeSwitch: UISwitch!
     var name: String?
     var allergyList: [String] = []
     let logoutSegueIdentifier = "LogoutSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        allergenTableView.dataSource = self
-        allergenTableView.delegate = self
-        nameLabel.text = name
-        fetchUserData()
-    }
+                
+                // Set up the allergenTableView's dataSource and delegate
+                allergenTableView.dataSource = self
+                allergenTableView.delegate = self
+                
+                // Set the name label
+                nameLabel.text = name
+                
+                // Fetch user data to populate the allergens list
+                fetchUserData()
+        
+                applyTheme() // Apply theme when view loads
+            }
+    
     
     
     func fetchUserData() {
@@ -123,7 +133,42 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
        
     }
-
+    
+    
+    @IBAction func toggleDarkMode(_ sender: UISwitch) {
+            updateTheme(isDarkMode: sender.isOn)
+            UserDefaults.standard.set(sender.isOn, forKey: "darkModeEnabled")
+        }
+        
+        private func applyTheme() {
+            let darkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
+            darkModeSwitch.setOn(darkModeEnabled, animated: false)
+            updateTheme(isDarkMode: darkModeEnabled)
+        }
+        
+        private func updateTheme(isDarkMode: Bool) {
+            // Set user interface style for the current window
+            view.window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+            
+            // Update tab bar and navigation bar appearance for the current window
+            updateTabBarAndNavBar(isDarkMode: isDarkMode)
+        }
+        
+        private func updateTabBarAndNavBar(isDarkMode: Bool) {
+            // Refresh the appearance of the navigation bar and tab bar
+            if let tabBar = self.tabBarController?.tabBar {
+                tabBar.barStyle = isDarkMode ? .black : .default
+                tabBar.tintColor = isDarkMode ? .white : .systemBlue
+            }
+            
+            if let navBar = self.navigationController?.navigationBar {
+                navBar.barStyle = isDarkMode ? .black : .default
+                navBar.tintColor = isDarkMode ? .white : .systemBlue
+            }
+            
+            // Trigger a layout update if needed
+            setNeedsStatusBarAppearanceUpdate()
+        }
     
     
     

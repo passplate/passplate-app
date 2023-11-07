@@ -21,6 +21,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    
+    
+    func setStyle(_ style: UIUserInterfaceStyle) {
+        // Apply the user interface style to the window of the scene
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            window.overrideUserInterfaceStyle = style
+            
+            // Update appearance for tabBar and navigationBar
+            UITabBar.appearance().tintColor = style == .dark ? .white : .systemBlue
+            UINavigationBar.appearance().tintColor = style == .dark ? .white : .systemBlue
+            UINavigationBar.appearance().barStyle = style == .dark ? .black : .default
+            
+            // Refresh the appearance of currently visible view controller
+            window.rootViewController?.setNeedsStatusBarAppearanceUpdate()
+            if let tabBarController = window.rootViewController as? UITabBarController {
+                tabBarController.viewControllers?.forEach { viewController in
+                    viewController.setNeedsStatusBarAppearanceUpdate()
+                    viewController.navigationController?.navigationBar.setNeedsLayout()
+                }
+            }
+        }
+    }
 
     // MARK: UISceneSession Lifecycle
 
