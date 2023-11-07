@@ -47,42 +47,53 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     }
     
     func fetchSearchResults(searchVal: String) {
-        let urlString = "https://www.themealdb.com/api/json/v1/1/search.php?s=\(searchVal)"
-        guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
+        let encodedArea = searchVal.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = "https://www.themealdb.com/api/json/v1/1/filter.php?a=\(encodedArea)"
+        
+        guard let url = URL(string: urlString) else {
             print("Invalid URL.")
             return
         }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
+        let request = URLRequest(url: url)
+
         let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
-            
+
             if let error = error {
                 print("Error took place \(error)")
                 return
             }
-            
+
             guard let data = data else {
                 print("Did not receive data")
                 return
             }
-            
+
             do {
                 let decoder = JSONDecoder()
                 let recipesResponse = try decoder.decode(Recipes.self, from: data)
-                
-                // Process each meal to fetch full details and filter out allergens
-                let meals = recipesResponse.meals
+
+                guard let meals = recipesResponse.meals else {
+                    DispatchQueue.main.async {
+                        print("No meals found for the area.")
+                    }
+                    return
+                }
+
                 var filteredMeals = [Recipe]()
                 let fetchGroup = DispatchGroup()
 
                 for meal in meals {
                     fetchGroup.enter()
                     self.fetchFullRecipe(for: meal.idMeal) { fullRecipe in
-                        if let fullRecipe = fullRecipe, !self.mealContainsAllergens(fullRecipe) {
-                            filteredMeals.append(meal)
+                        if let fullRecipe = fullRecipe {
+                            let allergenCheck = self.mealContainsAllergens(fullRecipe)
+                            if !allergenCheck.containsAllergens {
+                                filteredMeals.append(meal)
+                            } else {
+                                print("Meal: \(fullRecipe.strMeal) contains allergens: \(allergenCheck.detectedAllergens.joined(separator: ", "))")
+                            }
                         }
                         fetchGroup.leave()
                     }
@@ -92,14 +103,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                     self.filteredMeals = filteredMeals
                     self.tableView.reloadData()
                 }
-                
+
             } catch {
-                print("JSON decoding failed: \(error)")
+                DispatchQueue.main.async {
+                    print("JSON decoding failed: \(error)")
+                }
             }
         }
+
         task.resume()
     }
-
+    
     func fetchFullRecipe(for idMeal: String, completion: @escaping (FullRecipe?) -> Void) {
         let urlString = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(idMeal)"
         guard let url = URL(string: urlString) else {
@@ -134,24 +148,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         task.resume()
     }
 
-    func mealContainsAllergens(_ meal: FullRecipe) -> Bool {
+    func mealContainsAllergens(_ meal: FullRecipe) -> (containsAllergens: Bool, detectedAllergens: [String]) {
+        var detectedAllergens: [String] = []
         let ingredients = [
-                meal.strIngredient1, meal.strIngredient2, meal.strIngredient3, meal.strIngredient4,
-                meal.strIngredient5, meal.strIngredient6, meal.strIngredient7, meal.strIngredient8,
-                meal.strIngredient9, meal.strIngredient10, meal.strIngredient11, meal.strIngredient12,
-                meal.strIngredient13, meal.strIngredient14, meal.strIngredient15, meal.strIngredient16,
-                meal.strIngredient17, meal.strIngredient18, meal.strIngredient19
-            ]
-            
-            for ingredient in ingredients.compactMap({ $0 }) { // This will remove nil values from the array
-                if userAllergens.contains(where: { allergen in
-                    ingredient.lowercased().contains(allergen.lowercased())
-                }) {
-                    return true // This means an allergen was found in the ingredients
+            meal.strIngredient1, meal.strIngredient2, meal.strIngredient3, meal.strIngredient4,
+            meal.strIngredient5, meal.strIngredient6, meal.strIngredient7, meal.strIngredient8,
+            meal.strIngredient9, meal.strIngredient10, meal.strIngredient11, meal.strIngredient12,
+            meal.strIngredient13, meal.strIngredient14, meal.strIngredient15, meal.strIngredient16,
+            meal.strIngredient17, meal.strIngredient18, meal.strIngredient19
+        ]
+
+        for ingredient in ingredients.compactMap({ $0 }) { // Remove nil values
+            for allergen in userAllergens {
+                if ingredient.lowercased().contains(allergen.lowercased()) {
+                    detectedAllergens.append(allergen) // Add the detected allergen to the array
                 }
             }
-            
-            return false // No allergens found in the ingredients
+        }
+
+        return (containsAllergens: !detectedAllergens.isEmpty, detectedAllergens: detectedAllergens)
     }
 
     

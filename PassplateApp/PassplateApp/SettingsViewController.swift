@@ -94,7 +94,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     // Handles deletion from both table and data
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let allergy = allergyList[indexPath.row]
+            _ = allergyList[indexPath.row]
             
             allergyList.remove(at: indexPath.row)
             

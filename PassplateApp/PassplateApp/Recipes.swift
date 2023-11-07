@@ -11,5 +11,5 @@ struct Recipes: Decodable {
     let count: Int?
     let next: URL?
     let previous: URL?
-    let meals: [Recipe]
+    let meals: [Recipe]?
 }
