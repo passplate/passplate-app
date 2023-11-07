@@ -20,6 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     let settingsSegueIdentifier = "SearchToSettingsSegue"
     var userAllergens: [String] = []
     var userName: String = ""
+    var filteredMeals: [Recipe] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         tableView.dataSource = self
         searchBar.delegate = self
         searchBar.text = inputSearchText
-        fetchSearchResults(searchVal: searchBar.text!)
         fetchUserData()
+        fetchSearchResults(searchVal: inputSearchText)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,70 +40,158 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
 
        
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        fetchSearchResults(searchVal: searchBar.text!)
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            return
+        }
+        fetchSearchResults(searchVal: searchText)
     }
-
+    
     func fetchSearchResults(searchVal: String) {
-        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + searchVal)
+        let urlString = "https://www.themealdb.com/api/json/v1/1/search.php?s=\(searchVal)"
+        guard let url = URL(string: urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
+            print("Invalid URL.")
+            return
+        }
 
-        guard let requestUrl = url else { fatalError() }
-        var request = URLRequest(url: requestUrl)
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        // Send HTTP Request
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+            
             if let error = error {
                 print("Error took place \(error)")
                 return
             }
+            
+            guard let data = data else {
+                print("Did not receive data")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let recipesResponse = try decoder.decode(Recipes.self, from: data)
+                
+                // Process each meal to fetch full details and filter out allergens
+                let meals = recipesResponse.meals
+                var filteredMeals = [Recipe]()
+                let fetchGroup = DispatchGroup()
 
-            // Convert HTTP Response Data to String
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    
-                    // Decode into list of Recipes
-                    self.recipes = try decoder.decode(Recipes.self, from: data)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                for meal in meals {
+                    fetchGroup.enter()
+                    self.fetchFullRecipe(for: meal.idMeal) { fullRecipe in
+                        if let fullRecipe = fullRecipe, !self.mealContainsAllergens(fullRecipe) {
+                            filteredMeals.append(meal)
+                        }
+                        fetchGroup.leave()
                     }
-                } catch {
-                    print("Failed to load: \(error)")
                 }
 
+                fetchGroup.notify(queue: .main) {
+                    self.filteredMeals = filteredMeals
+                    self.tableView.reloadData()
+                }
+                
+            } catch {
+                print("JSON decoding failed: \(error)")
             }
-
         }
-        
         task.resume()
     }
+
+    func fetchFullRecipe(for idMeal: String, completion: @escaping (FullRecipe?) -> Void) {
+        let urlString = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(idMeal)"
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL for meal details.")
+            completion(nil)
+            return
+        }
+
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error fetching meal details: \(error)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                print("Did not receive data for meal details")
+                completion(nil)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let recipeResponse = try decoder.decode(RecipeResponse.self, from: data)
+                completion(recipeResponse.meals?.first)
+            } catch {
+                print("Decoding error for meal details: \(error)")
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
+
+    func mealContainsAllergens(_ meal: FullRecipe) -> Bool {
+        let ingredients = [
+                meal.strIngredient1, meal.strIngredient2, meal.strIngredient3, meal.strIngredient4,
+                meal.strIngredient5, meal.strIngredient6, meal.strIngredient7, meal.strIngredient8,
+                meal.strIngredient9, meal.strIngredient10, meal.strIngredient11, meal.strIngredient12,
+                meal.strIngredient13, meal.strIngredient14, meal.strIngredient15, meal.strIngredient16,
+                meal.strIngredient17, meal.strIngredient18, meal.strIngredient19
+            ]
+            
+            for ingredient in ingredients.compactMap({ $0 }) { // This will remove nil values from the array
+                if userAllergens.contains(where: { allergen in
+                    ingredient.lowercased().contains(allergen.lowercased())
+                }) {
+                    return true // This means an allergen was found in the ingredients
+                }
+            }
+            
+            return false // No allergens found in the ingredients
+    }
+
+    
+
+   
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == recipeSegueIdentifier,
            let destination = segue.destination as? RecipeViewController,
            let recipeIndex = tableView.indexPathForSelectedRow?.row
         {
-            destination.recipe = recipes.meals[recipeIndex]
-        }
-        if segue.identifier == settingsSegueIdentifier,
+            destination.recipe = filteredMeals[recipeIndex]
+        } else if segue.identifier == settingsSegueIdentifier,
            let destination = segue.destination as? SettingsViewController {
-            // When the user goes to create a new pizza, these fields should not be populated.
             destination.name = userName
             destination.allergyList = userAllergens
         }
-
     }
     
     func fetchUserData() {
-        let uid = Auth.auth().currentUser?.uid
-        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("No user is currently logged in.")
+            return
+        }
+        
+        Firestore.firestore().collection("users").document(uid).getDocument { [weak self] (document, error) in
+            guard let self = self else { return }
+            
             if let error = error {
                 print("Error fetching user data from Firestore: \(error.localizedDescription)")
-            } else if let document = document, document.exists {
-                // User document exists, and you can access its data
+                return
+            }
+            
+            if let document = document, document.exists {
                 if let userData = document.data() {
-                    // Access specific fields from userData
-                    self.userName = (userData["name"] as? String)!
-                    self.userAllergens = (userData["allergies"] as? [String])!
+                    self.userName = userData["name"] as? String ?? "Unknown"
+                    self.userAllergens = userData["allergies"] as? [String] ?? []
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData() // If needed to refresh the UI based on fetched data
+                    }
                 }
             } else {
                 print("User document does not exist in Firestore.")
@@ -111,23 +200,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.meals.count
+        return filteredMeals.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150.0
     }
     
-    // Displays recipe objects in custom cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: recipeCellIdentifier, for: indexPath as IndexPath) as! RecipeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: recipeCellIdentifier, for: indexPath) as! RecipeTableViewCell
         
         let row = indexPath.row
-        cell.recipeNameLabel?.text = recipes.meals[row].strMeal
+        let meal = filteredMeals[row]
+        cell.recipeNameLabel?.text = meal.strMeal
         cell.recipeNameLabel?.numberOfLines = 0
         cell.recipeImageView?.contentMode = .scaleAspectFit
         
-        if let imageURL = URL(string: recipes.meals[row].strMealThumb) {
+        // Using the imageURL from the filtered meal
+        if let imageURL = URL(string: meal.strMealThumb) {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
                     DispatchQueue.main.async {

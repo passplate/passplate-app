@@ -28,6 +28,7 @@ struct FullRecipe: Decodable {
     let strIngredient9: String?
     let strIngredient10: String?
     let strIngredient11: String?
+    let strIngredient12: String?
     let strIngredient13: String?
     let strIngredient14: String?
     let strIngredient15: String?
@@ -35,7 +36,6 @@ struct FullRecipe: Decodable {
     let strIngredient17: String?
     let strIngredient18: String?
     let strIngredient19: String?
-    let strIngredient20: String?
     let strMeasure1: String?
     let strMeasure2: String?
     let strMeasure3: String?
@@ -60,4 +60,12 @@ struct FullRecipe: Decodable {
     let strImageSource: String?
     let strCreativeCommonsConfirmed: String?
     let dateModified: String?
+}
+
+
+extension FullRecipe {
+    var ingredients: [String] {
+        // Extract all ingredients into an array, filtering out any nil or empty values
+        return [strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient13, strIngredient14, strIngredient15, strIngredient16, strIngredient17, strIngredient18, strIngredient19].compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+    }
 }
