@@ -10,7 +10,7 @@ Summer Ely (Release 10%, Overall 30%)
 - Added segues from home page to search page and search page to individual recipe page.
 - Added custom font and improved UI of search/recipes page
 
-Trent Ho (15%)
+Trent Ho (Release 30%, Overall 22.5%)
 - Navigation Tab Bar
 - Implemented the NavTab bar and created the icons for the home, upload recipe, and favorites sections.
 - Added segues so that the Tab bar is present in other screens.
@@ -21,7 +21,7 @@ Trent Ho (15%)
   - Implemented dark mode functionality within the app, allowing users to toggle between light and dark themes.
   - Enabled the dark mode feature to apply across the entire app, persisting user preferences and ensuring a consistent look and feel.
 
-Anne-Marie Prosper (Release , Overall)
+Anne-Marie Prosper (Release 30%, Overall 25%)
 - User Signup & Login screen
 - Added segues to transition from screens to home screen upon successful login.
 - Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
@@ -32,7 +32,7 @@ Anne-Marie Prosper (Release , Overall)
   - Display the information within the database to the user.
   - Added log out functionality, segues back to log in screen.
 
-Faiza Rahman ()
+Faiza Rahman (Release 30%, Overall 22.5%)
 - Logo design
 - Home Screen
 - Designed a basic homepage layout in Interface Builder featuring:
