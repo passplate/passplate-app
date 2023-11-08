@@ -14,7 +14,12 @@ Trent Ho (15%)
 - Navigation Tab Bar
 - Implemented the NavTab bar and created the icons for the home, upload recipe, and favorites sections.
 - Added segues so that the Tab bar is present in other screens.
-  - Added Placeholder segues and screens for the favorites and upload recipe sections.
+- Filtering System
+  - Integrated a filtering system within the search functionality that filters out recipes based on user-specified allergens and dietary restrictions.
+  - Enhanced the Recipe and FullRecipe models to handle the filtering logic, ensuring recipes with certain ingredients are excluded from the search results.
+- Dark Mode
+  - Implemented dark mode functionality within the app, allowing users to toggle between light and dark themes.
+  - Enabled the dark mode feature to apply across the entire app, persisting user preferences and ensuring a consistent look and feel.
 
 Anne-Marie Prosper (20%)
 - User Signup & Login screen
