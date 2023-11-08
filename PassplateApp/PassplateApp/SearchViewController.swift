@@ -158,24 +158,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
             meal.strIngredient9, meal.strIngredient10, meal.strIngredient11, meal.strIngredient12,
             meal.strIngredient13, meal.strIngredient14, meal.strIngredient15, meal.strIngredient16,
             meal.strIngredient17, meal.strIngredient18, meal.strIngredient19
-        ].compactMap{$0?.lowercased()}
+        ].compactMap { $0?.lowercased() }
 
         for allergen in userAllergens {
-            // Check if the allergen is a dietary restriction group
-            if let restrictionGroup = DietaryRestrictions.shared.restrictions[allergen] {
-                // Check if any ingredient is in the dietary restriction group
-                for ingredient in ingredients {
-                    if restrictionGroup.contains(where: ingredient.contains) {
-                        detectedAllergens.append(ingredient)
-                        break // Found an allergen, no need to check further
-                    }
-                }
+            // Check both singular and plural forms of allergen
+            let singularAllergen = singularize(allergen)
+               let pluralAllergen = allergen.lowercased().hasSuffix("s") ? allergen.lowercased() : allergen.lowercased() + "s"
+
+            if ingredients.contains(singularAllergen) || ingredients.contains(pluralAllergen) {
+                detectedAllergens.append(allergen)
             } else {
-                // It's a specific allergen, not a group
-                if ingredients.contains(where: { ingredient in
-                    ingredient.contains(allergen.lowercased())
-                }) {
-                    detectedAllergens.append(allergen)
+                // Check if the allergen is a dietary restriction group
+                if let restrictionGroup = dietaryRestrictions[allergen] {
+                    // Check if any ingredient is in the dietary restriction group
+                    for ingredient in ingredients {
+                        if restrictionGroup.contains(where: { $0 == singularize(ingredient) || $0 == (ingredient + "s") }) {
+                            detectedAllergens.append(allergen)
+                            break // Found an allergen, no need to check further
+                        }
+                    }
                 }
             }
         }
@@ -189,10 +190,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         if word.lowercased().hasSuffix("ies") {
             let index = word.index(word.endIndex, offsetBy: -3)
             return String(word[..<index]) + "y"
-        } else if word.lowercased().hasSuffix("es") {
+        } else if word.lowercased().hasSuffix("es") && !word.lowercased().hasSuffix("sses") {
             let index = word.index(word.endIndex, offsetBy: -2)
             return String(word[..<index])
-        } else if word.last == "s" {
+        } else if word.last == "s" && !word.lowercased().hasSuffix("ss") {
             return String(word.dropLast())
         }
         return word
