@@ -21,12 +21,17 @@ Trent Ho (15%)
   - Implemented dark mode functionality within the app, allowing users to toggle between light and dark themes.
   - Enabled the dark mode feature to apply across the entire app, persisting user preferences and ensuring a consistent look and feel.
 
-Anne-Marie Prosper (20%)
+Anne-Marie Prosper (Release , Overall)
 - User Signup & Login screen
 - Added segues to transition from screens to home screen upon successful login.
 - Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
   - Added alert error messages whenever signin or signup is unsuccessful.
-  
+- Set up Firestore database, allowing each user to store their: name, allergens, and dietary restrictions.
+- Created Settings View Controller 
+  - Enabled user's to edit (adding or removing) their allergens in the database
+  - Display the information within the database to the user.
+  - Added log out functionality, segues back to log in screen.
+
 Faiza Rahman ()
 - Logo design
 - Home Screen
