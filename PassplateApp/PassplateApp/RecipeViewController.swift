@@ -188,7 +188,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
             }
         }
         cell.textLabel?.text = "\(ingredientMeasure.0) \(ingredientMeasure.1)"
-//        cell.detailTextLabel?.text = ingredientMeasure.1
         
         return cell
     }
