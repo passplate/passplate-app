@@ -14,21 +14,31 @@ Trent Ho (15%)
 - Navigation Tab Bar
 - Implemented the NavTab bar and created the icons for the home, upload recipe, and favorites sections.
 - Added segues so that the Tab bar is present in other screens.
-  - Added Placeholder segues and screens for the favorites and upload recipe sections.
+- Filtering System
+  - Integrated a filtering system within the search functionality that filters out recipes based on user-specified allergens and dietary restrictions.
+  - Enhanced the Recipe and FullRecipe models to handle the filtering logic, ensuring recipes with certain ingredients are excluded from the search results.
+- Dark Mode
+  - Implemented dark mode functionality within the app, allowing users to toggle between light and dark themes.
+  - Enabled the dark mode feature to apply across the entire app, persisting user preferences and ensuring a consistent look and feel.
 
 Anne-Marie Prosper (20%)
 - User Signup & Login screen
 - Added segues to transition from screens to home screen upon successful login.
 - Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
   - Added alert error messages whenever signin or signup is unsuccessful.
-
-
-Faiza Rahman (15%)
+  
+Faiza Rahman ()
+- Logo design
 - Home Screen
 - Designed a basic homepage layout in Interface Builder featuring:
   - Placeholder for the interactive world map.
   - Search bar component.
   - Placeholder for the favorites icon.
+- Added and implemented the logic for the map view
+  - Used Geocoder and the API's list of countries to add coordinates for each country included in the API
+  - Implemented the ability to run a search of a coordinate's associated recipes (ex. when the USA coordinate is clicked, it runs a search for "American" food)
+- Updated UI for login/sign-up pages past the barebones stage
+- Added UI to the upload recipes/favorites pages
 
 
 Deviations:
