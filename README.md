@@ -26,14 +26,19 @@ Anne-Marie Prosper (20%)
 - Added segues to transition from screens to home screen upon successful login.
 - Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
   - Added alert error messages whenever signin or signup is unsuccessful.
-
-
-Faiza Rahman (15%)
+  
+Faiza Rahman ()
+- Logo design
 - Home Screen
 - Designed a basic homepage layout in Interface Builder featuring:
   - Placeholder for the interactive world map.
   - Search bar component.
   - Placeholder for the favorites icon.
+- Added and implemented the logic for the map view
+  - Used Geocoder and the API's list of countries to add coordinates for each country included in the API
+  - Implemented the ability to run a search of a coordinate's associated recipes (ex. when the USA coordinate is clicked, it runs a search for "American" food)
+- Updated UI for login/sign-up pages past the barebones stage
+- Added UI to the upload recipes/favorites pages
 
 
 Deviations:
