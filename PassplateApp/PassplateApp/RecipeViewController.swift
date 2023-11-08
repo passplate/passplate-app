@@ -182,6 +182,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
             cell.textLabel?.textColor = .red
         } else {
             cell.textLabel?.textColor = .black
+            if self.traitCollection.userInterfaceStyle == .dark {
+                // The app is in dark mode
+                cell.textLabel?.textColor = .white
+            }
         }
         cell.textLabel?.text = "\(ingredientMeasure.0) \(ingredientMeasure.1)"
 //        cell.detailTextLabel?.text = ingredientMeasure.1
