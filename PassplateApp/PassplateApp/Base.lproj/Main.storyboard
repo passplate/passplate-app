@@ -42,7 +42,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="J6B-OD-e69">
@@ -106,14 +106,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1403.8167938931297" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="1279" y="1851"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="cb1-0y-2gT">
             <objects>
                 <viewController id="wcF-EF-AoG" customClass="SettingsViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EXe-Zq-B24">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nd8-cI-vNO">
@@ -241,7 +241,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="d4R-qW-oB6" customClass="SearchViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ahg-8y-CLS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="VEx-qF-qr2">
@@ -354,14 +354,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUf-tx-tSd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2295.419847328244" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="2033" y="1851"/>
         </scene>
         <!--Recipe View Controller-->
         <scene sceneID="QTh-Tn-zkm">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="niL-8a-Ga7" customClass="RecipeViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uzO-tG-qdr">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26L-YG-Wuf">
@@ -446,14 +446,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YY-p5-IDa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3127.4809160305344" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="2958" y="1851"/>
         </scene>
         <!--Upload Recipe View Controller-->
         <scene sceneID="omQ-wj-cPy">
             <objects>
                 <viewController title="Upload Recipe View Controller" modalPresentationStyle="fullScreen" id="2cd-0f-LqS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ycP-HN-jfS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PassPlate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBd-ZU-WWj">
@@ -523,14 +523,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxc-HJ-9HO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4098.4732824427483" y="1851.4084507042255"/>
+            <point key="canvasLocation" x="3834" y="1851"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="ynX-oG-fOB">
             <objects>
                 <viewController title="Favorites View Controller" modalPresentationStyle="fullScreen" id="nEm-C4-bpn" customClass="FavoritesViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f6p-ha-jLp">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PassPlate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wm5-f8-FGs">
@@ -623,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Fb-6Z-Syo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5150.3816793893129" y="1875.3521126760563"/>
+            <point key="canvasLocation" x="4613" y="1851"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="8gG-cr-kNB">
@@ -839,12 +839,12 @@
                         <outlet property="emailTextField" destination="ABN-6Y-GTv" id="oxU-hO-4qg"/>
                         <outlet property="nameTextField" destination="Wo2-B7-rdt" id="Dxo-gb-jcB"/>
                         <outlet property="passwordTextField" destination="Rh4-Cw-0b3" id="UmV-KE-s8U"/>
-                        <segue destination="Efz-wO-DBJ" kind="presentation" identifier="SignupSegue" modalPresentationStyle="fullScreen" id="6jV-TV-HLV"/>
+                        <segue destination="XpA-43-IkV" kind="show" identifier="SignupSegue" id="aPq-2l-GSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWM-JK-mQ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823.6641221374045" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="1683" y="-16"/>
         </scene>
         <!--Home-->
         <scene sceneID="shb-kd-qYx">
@@ -853,7 +853,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home_corrected_color" selectedImage="home_corrected_color" id="jPZ-jg-gVP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FBj-g6-K5s">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -867,9 +867,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="F8g-9j-fWb"/>
-        <segue reference="0fb-7h-HeR"/>
-        <segue reference="87a-s4-reD"/>
+        <segue reference="b6o-zp-mef"/>
+        <segue reference="cLL-dm-cIQ"/>
+        <segue reference="aPq-2l-GSI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
