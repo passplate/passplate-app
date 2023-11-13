@@ -9,12 +9,19 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+
+protocol SettingsViewControllerDelegate: AnyObject {
+    func didChangeFilteredRecipesSetting(to value: Bool)
+}
+
+
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
+    weak var delegate: SettingsViewControllerDelegate?
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet weak var allergenTableView: UITableView!
     @IBOutlet var darkModeSwitch: UISwitch!
+    @IBOutlet weak var showFilteredRecipesSwitch: UISwitch!
     var name: String?
     var allergyList: [String] = []
     let logoutSegueIdentifier = "LogoutSegue"
@@ -32,7 +39,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 // Fetch user data to populate the allergens list
                 fetchUserData()
         
+        
+                let showFilteredRecipesEnabled = UserDefaults.standard.bool(forKey: "showFilteredRecipesEnabled")
+                showFilteredRecipesSwitch.setOn(showFilteredRecipesEnabled, animated: false)
+        
                 applyTheme() // Apply theme when view loads
+        
             }
     
     
@@ -171,5 +183,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     
     
+    @IBAction func showFilteredRecipesSwitchChanged(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: "showFilteredRecipesEnabled")
+        delegate?.didChangeFilteredRecipesSetting(to: sender.isOn)
+    }
     
 }

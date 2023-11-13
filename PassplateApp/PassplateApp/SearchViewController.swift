@@ -13,6 +13,11 @@ import CoreData
 let context = appDelegate.persistentContainer.viewContext
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+struct AllergenAwareRecipe {
+    let recipe: Recipe
+    let containsAllergens: Bool
+}
+
 class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate,  UITableViewDataSource {
     
     @IBOutlet var searchBar: UISearchBar!
@@ -27,6 +32,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     var userName: String = ""
     var filteredMeals: [Recipe] = []
     let dietaryRestrictions = DietaryRestrictions.shared.restrictions
+    var showFilteredRecipes: Bool = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +94,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                     return
                 }
 
-                var filteredMeals = [Recipe]()
+                var allMeals = [AllergenAwareRecipe]()
                 let fetchGroup = DispatchGroup()
 
                 for meal in meals {
@@ -95,10 +102,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                     self.fetchFullRecipe(for: meal.idMeal) { fullRecipe in
                         if let fullRecipe = fullRecipe {
                             let allergenCheck = self.mealContainsAllergens(fullRecipe)
-                            if !allergenCheck.containsAllergens {
-                                filteredMeals.append(meal)
-                            } else {
-                                print("Meal: \(fullRecipe.strMeal) contains allergens: \(allergenCheck.detectedAllergens.joined(separator: ", "))")
+                            allMeals.append(AllergenAwareRecipe(recipe: meal, containsAllergens: allergenCheck.containsAllergens))
+                            // Print statement for debugging
+                            if allergenCheck.containsAllergens {
+                                print("Meal with allergens: \(fullRecipe.strMeal), Allergens: \(allergenCheck.detectedAllergens.joined(separator: ", "))")
                             }
                         }
                         fetchGroup.leave()
@@ -106,7 +113,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                 }
 
                 fetchGroup.notify(queue: .main) {
-                    self.filteredMeals = filteredMeals
+                    if self.showFilteredRecipes {
+                        // Show all meals
+                        self.filteredMeals = allMeals.map { $0.recipe }
+                    } else {
+                        // Show only allergen-free meals
+                        self.filteredMeals = allMeals.filter { !$0.containsAllergens }.map { $0.recipe }
+                    }
                     self.tableView.reloadData()
                 }
 
@@ -119,6 +132,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
 
         task.resume()
     }
+
     
     func fetchFullRecipe(for idMeal: String, completion: @escaping (FullRecipe?) -> Void) {
         let urlString = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(idMeal)"
@@ -167,7 +181,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         for allergen in userAllergens {
             // Check both singular and plural forms of allergen
             let singularAllergen = singularize(allergen)
-               let pluralAllergen = allergen.lowercased().hasSuffix("s") ? allergen.lowercased() : allergen.lowercased() + "s"
+            let pluralAllergen = allergen.lowercased().hasSuffix("s") ? allergen.lowercased() : allergen.lowercased() + "s"
 
             if ingredients.contains(singularAllergen) || ingredients.contains(pluralAllergen) {
                 detectedAllergens.append(allergen)
@@ -207,13 +221,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == recipeSegueIdentifier,
            let destination = segue.destination as? RecipeViewController,
-           let recipeIndex = tableView.indexPathForSelectedRow?.row
-        {
+           let recipeIndex = tableView.indexPathForSelectedRow?.row {
             destination.recipe = filteredMeals[recipeIndex]
         } else if segue.identifier == settingsSegueIdentifier,
-           let destination = segue.destination as? SettingsViewController {
-            destination.name = userName
-            destination.allergyList = userAllergens
+                  let settingsVC = segue.destination as? SettingsViewController {
+            settingsVC.name = userName
+            settingsVC.allergyList = userAllergens
+            settingsVC.delegate = self // Set SearchViewController as the delegate
         }
     }
     
@@ -309,5 +323,13 @@ extension SearchViewController: RecipeTableViewCellDelegate {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let recipe = filteredMeals[indexPath.row]
         saveRecipeToCoreData(recipe)
+    }
+}
+
+extension SearchViewController: SettingsViewControllerDelegate {
+    func didChangeFilteredRecipesSetting(to value: Bool) {
+        print("Filtered Recipes Switch is now: \(value)")
+                showFilteredRecipes = value
+                fetchSearchResults(searchVal: searchBar.text ?? "")
     }
 }
