@@ -202,7 +202,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         }
         return word
     }
-
    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
