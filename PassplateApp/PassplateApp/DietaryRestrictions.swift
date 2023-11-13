@@ -14,7 +14,7 @@ struct DietaryRestrictions {
     let restrictions: [String: [String]] = [
         "nut-free": [
             "peanuts", "walnuts", "almonds", "hazelnuts", "cashews", "pecans", "brazil nuts",
-            "pistachios", "macadamia nuts", "pine nuts", "chestnuts"
+            "pistachios", "macadamia nuts", "pine nuts", "chestnuts", "pecan nuts", "peanut butter", "pecan"
         ],
         "vegan": [
             "beef", "steak", "pork", "bacon", "ham", "lamb", "mutton", "veal", "chicken", "turkey", "duck", "goose",

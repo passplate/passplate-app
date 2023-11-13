@@ -179,29 +179,26 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         ].compactMap { $0?.lowercased() }
 
         for allergen in userAllergens {
-            // Check both singular and plural forms of allergen
-            let singularAllergen = singularize(allergen)
-            let pluralAllergen = allergen.lowercased().hasSuffix("s") ? allergen.lowercased() : allergen.lowercased() + "s"
-
-            if ingredients.contains(singularAllergen) || ingredients.contains(pluralAllergen) {
-                detectedAllergens.append(allergen)
-            } else {
-                // Check if the allergen is a dietary restriction group
-                if let restrictionGroup = dietaryRestrictions[allergen] {
-                    // Check if any ingredient is in the dietary restriction group
-                    for ingredient in ingredients {
-                        if restrictionGroup.contains(where: { $0 == singularize(ingredient) || $0 == (ingredient + "s") }) {
-                            detectedAllergens.append(allergen)
-                            break // Found an allergen, no need to check further
-                        }
+            // Check if the allergen is a dietary restriction group
+            if let restrictionGroup = dietaryRestrictions[allergen] {
+                for ingredient in ingredients {
+                    if restrictionGroup.contains(where: { ingredient.contains($0.lowercased()) }) {
+                        detectedAllergens.append(allergen)
+                        break // Found an allergen, no need to check further
                     }
+                }
+            } else {
+                // Check for the allergen directly in the ingredients
+                let normalizedAllergen = allergen.lowercased()
+                if ingredients.contains(where: { $0.contains(normalizedAllergen) }) {
+                    detectedAllergens.append(allergen)
                 }
             }
         }
 
         return (!detectedAllergens.isEmpty, detectedAllergens)
     }
-
+    
 
     func singularize(_ word: String) -> String {
         // This is a naive implementation and works on simple cases.
