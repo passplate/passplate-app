@@ -8,12 +8,17 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import CoreData
+
+let context = appDelegate.persistentContainer.viewContext
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate,  UITableViewDataSource {
     
     @IBOutlet var searchBar: UISearchBar!
     var inputSearchText: String
     @IBOutlet weak var tableView: UITableView!
+
     var recipes: Recipes
     let recipeCellIdentifier = "RecipeCell"
     let recipeSegueIdentifier = "RecipeSegueIdentifier"
@@ -22,7 +27,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     var userName: String = ""
     var filteredMeals: [Recipe] = []
     let dietaryRestrictions = DietaryRestrictions.shared.restrictions
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -270,20 +274,41 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                 }
             }
         }
-        
+        cell.delegate = self
         return cell
     }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 10
-//    }
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = UIColor.clear
-//        return headerView
-//    }
-
 
     
+    func saveRecipeToCoreData(_ recipe: Recipe) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let recipeEntity = NSEntityDescription.insertNewObject(
+            forEntityName: "RecipeEntity",
+            into: context)
+        recipeEntity.setValue(recipe.idMeal, forKey: "idMeal")
+        recipeEntity.setValue(recipe.strMeal, forKey: "strMeal")
+        recipeEntity.setValue(recipe.strMealThumb, forKey: "strMealThumb")
+        
+        saveContext()
+    }
+    
+    func saveContext () {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+
   }
+
+
+extension SearchViewController: RecipeTableViewCellDelegate {
+    func didTapFavoriteButton(on cell: RecipeTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let recipe = filteredMeals[indexPath.row]
+        saveRecipeToCoreData(recipe)
+    }
+}

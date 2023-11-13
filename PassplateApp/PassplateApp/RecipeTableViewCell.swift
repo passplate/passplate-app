@@ -7,17 +7,22 @@
 
 import UIKit
 
+protocol RecipeTableViewCellDelegate: AnyObject {
+    func didTapFavoriteButton(on cell: RecipeTableViewCell)
+}
+
 class RecipeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var favButton: UIButton!
     
+    weak var delegate: RecipeTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,5 +30,9 @@ class RecipeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func favButtonTapped(_ sender: UIButton) {
+           delegate?.didTapFavoriteButton(on: self)
+       }
 
 }
