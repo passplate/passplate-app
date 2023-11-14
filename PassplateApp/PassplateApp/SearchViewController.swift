@@ -45,6 +45,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         fetchSearchResults(searchVal: inputSearchText)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Refresh data with current allergens
+        fetchUserData() // If needed to refresh user allergens
+        fetchSearchResults(searchVal: searchBar.text ?? "")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         self.recipes = Recipes(count: 0, next: nil, previous: nil, meals: [])
         self.inputSearchText = ""
