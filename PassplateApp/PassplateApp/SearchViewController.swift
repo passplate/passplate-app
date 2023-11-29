@@ -33,6 +33,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     var filteredMeals: [Recipe] = []
     let dietaryRestrictions = DietaryRestrictions.shared.restrictions
     var showFilteredRecipes: Bool = false
+    var allergenMap: [String: Bool] = [:]
+
 
     
     override func viewDidLoad() {
@@ -103,6 +105,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                 }
 
                 var allMeals = [AllergenAwareRecipe]()
+                var allergenMap = [String: Bool]()
                 let fetchGroup = DispatchGroup()
 
                 for meal in meals {
@@ -111,6 +114,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                         if let fullRecipe = fullRecipe {
                             let allergenCheck = self.mealContainsAllergens(fullRecipe)
                             allMeals.append(AllergenAwareRecipe(recipe: meal, containsAllergens: allergenCheck.containsAllergens))
+                            allergenMap[meal.idMeal] = allergenCheck.containsAllergens
                             // Print statement for debugging
                             if allergenCheck.containsAllergens {
                                 print("Meal with allergens: \(fullRecipe.strMeal), Allergens: \(allergenCheck.detectedAllergens.joined(separator: ", "))")
@@ -129,6 +133,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                         self.filteredMeals = allMeals.filter { !$0.containsAllergens }.map { $0.recipe }
                     }
                     self.tableView.reloadData()
+                    // Store the allergenMap in a property for use in cellForRowAt
+                    self.allergenMap = allergenMap
                 }
 
             } catch {
@@ -292,6 +298,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
                 }
             }
         }
+
+        // Remove any existing triangle view
+        cell.contentView.viewWithTag(1001)?.removeFromSuperview()
+
+        // Add a red triangle if the meal contains allergens and showFilteredRecipes is true
+        if showFilteredRecipes, let containsAllergens = allergenMap[meal.idMeal], containsAllergens {
+            let triangleSize = CGSize(width: 20, height: 20)
+            let triangleFrame = CGRect(x: cell.bounds.width - triangleSize.width - 10, y: 10, width: triangleSize.width, height: triangleSize.height)
+            let triangleView = UIView.createRedTriangle(frame: triangleFrame)
+            triangleView.tag = 1001  // Set a unique tag for the triangle view
+            cell.contentView.addSubview(triangleView)
+        }
+
         cell.delegate = self
         return cell
     }
@@ -336,5 +355,23 @@ extension SearchViewController: SettingsViewControllerDelegate {
         print("Filtered Recipes Switch is now: \(value)")
                 showFilteredRecipes = value
                 fetchSearchResults(searchVal: searchBar.text ?? "")
+    }
+}
+    
+extension UIView {
+    static func createRedTriangle(frame: CGRect) -> UIView {
+        let triangleView = UIView(frame: frame)
+        let layer = CAShapeLayer()
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: frame.width / 2, y: 0))
+        path.addLine(to: CGPoint(x: frame.width, y: frame.height))
+        path.addLine(to: CGPoint(x: 0, y: frame.height))
+        path.close()
+
+        layer.path = path.cgPath
+        layer.fillColor = UIColor.red.cgColor
+
+        triangleView.layer.insertSublayer(layer, at: 0)
+        return triangleView
     }
 }
