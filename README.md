@@ -42,20 +42,13 @@ Faiza Rahman (Release 30%, Overall 22.5%)
 - Added UI to the upload recipes/favorites pages
 
 
-Deviations:
-- On the search results screen we planned to display: the recipe image, name, description and cook time; however, the screen is only able to display the recipe image and name. This reduction is because the recipe description and cook time are not retrievable through the API call.
-- In our original design, we had both a profile page and a settings page. However, based on the feedback from our Design, we realized that the profile and "social media" aspect wasn't in the scope or focus of our app. Therefore, we decided to combine and simplify this into just the settings page.
-- For this phase, we implemented the ability for a user to add allergens/dietary restrictions. In our design we planned to handle this by flagging any recipes with a notice saying it contained an allergen. Based on the professor's feedback on our design, we decided to filter out any recipes that contain a user's allergens instead. For the final phase, we might add an option in settings to flag allergens instead of filtering them out (for example, if a user still wants all recipes to show up because they can use a substitute ingredient in place of their allergen). 
-
 ### Group number: 13
 ### Team Members: Summer Ely, Trent Ho, Anne-Marie Prosper, Faiza Rahman
 ### Name of project: Passplate
 ### Dependencies: Xcode 15, latest swift version, (Put in pods/frameworks that need to be installed first here)
 
 ### Special Instructions (this is just place holder will change later)
-* You have to open the file DragonWar.xcworkspace (as opposed to the file
-DragonWar.xcodeprog).
-* Use an iPhone 8+ Simulator
+* Use an iPhone 14 pro or iPhone 15 pro Simulator
   *  Before running the app, run "pod install" inside the DragonWar folder where the podfile is located
   * To login with Facebook, use this test account: email: DragonWarTest@gmail.com password: DragonWar
   *  To test the connection between two players, you need to set two player mode on, and you need to run it on an iPhone and a simulator at the same time (or 2 simulators)
@@ -65,7 +58,13 @@ DragonWar.xcodeprog).
 
 | Feature              | Description                                           | Release Planned | Release Actual | Deviations                 | Who/Percentage Worked on                |
 |----------------------|-------------------------------------------------------|-----------------|----------------|----------------------------|-----------------------------------------|
-| Search Page          | Search functionality with API integration             | [Planned]       | [Actual]       | [Deviations]               | Place holder   |
-| Recipe Page          | Detailed recipe display from search results           | [Planned]       | [Actual]       | [Deviations]               | Place holder   |
-| Navigation Tab Bar   | Custom navigation bar with icons and segues           | [Planned]       | [Actual]       | [Deviations]               | Place holder   |
-| ...                  | ...                                                   | ...             | ...            | ...                        | ...                                     |
+| Search Page          | Implementation of a search page with API integration for fetching recipes based on nationality | Alpha           | Alpha          | On the search results screen we planned to display: the recipe image, name, description and cook time; however, the screen is only able to display the recipe image and name. This reduction is because the recipe description and cook time are not retrievable through the API call.  | Place Holder  |
+| Recipe Page          | Detailed recipe display including name, image, category, ingredients, and instructions | Alpha           | Alpha          | None                       | Place Holder    |
+| Navigation Tab Bar   | Custom navigation bar with icons for home, upload recipe, and favorites, with integrated segues | Alpha            | Alpha           | None                       | Place Holder    |
+| Filtering System     | System to filter recipes based on user-specified allergens and dietary restrictions | Beta            | Beta           | None                       | Place Holder   |
+| Dark Mode            | Implementation of dark mode functionality across the app | Beta            | Beta           | None                       | Place Holder    |
+| User Signup & Login  | Basic authentication system with email, integrated with Firebase Authentication | Alpha           | Alpha          | None                       | Place Holder  |
+| Settings View Controller | Allows users to edit their allergens and dietary restrictions, and log out functionality | Beta            | Beta           | In our original design, we had both a profile page and a settings page. However, based on the feedback from our Design, we realized that the profile and "social media" aspect wasn't in the scope or focus of our app. Therefore, we decided to combine and simplify this into just the settings page. | Place Holder |
+| Logo and Home Screen Design | Design of the homepage layout with world map, search bar, and favorites icon | Alpha           | Alpha          | None | Place Holder  |
+| Favorites Recipe Page | | Final |Final | | Place Holder |
+| Uploading Recipes | | Final | Final | | Place Holder |
