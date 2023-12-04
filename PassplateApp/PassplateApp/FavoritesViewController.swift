@@ -29,8 +29,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     let recipeCellIdentifier = "RecipeCell"
     let recipeSegueIdentifier = "RecipeSegueIdentifier"
     let uploadedRecipeCellIdentifier = "UploadedRecipeCell"
+    let uploadRecipeSegueIdentifier = "UploadRecipeSegueIdentifier"
     var selectedTab = "Favorites"
-    //UploadRecipeSegue
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
            let recipeIndex = tableView.indexPathForSelectedRow?.row {
                 destination.recipe = favoriteRecipes[recipeIndex]
         }
+//        if segue.identifier == uploadRecipeSegueIdentifier,
+//           let destination = segue.destination as? SingleUploadedRecipeViewController,
+//           let recipeIndex = tableView.indexPathForSelectedRow?.row {
+//                destination.recipe = favoriteRecipes[recipeIndex]
+//        }
+        
     }
     
     func retrieveFavoritesFromFirestore() {
