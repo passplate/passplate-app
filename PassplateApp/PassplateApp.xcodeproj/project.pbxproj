@@ -56,6 +56,7 @@
 		904527392AD59AD600EC3736 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 904527382AD59AD600EC3736 /* FirebaseStorage */; };
 		9045273B2AD59AD600EC3736 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 9045273A2AD59AD600EC3736 /* FirebaseStorageCombine-Community */; };
 		907A48E02AF866140006B9FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A48DF2AF866140006B9FF /* SettingsViewController.swift */; };
+		908218AD2B1D116600FF3390 /* UploadRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908218AC2B1D116600FF3390 /* UploadRecipeViewController.swift */; };
 		90DB7D9A2AD7AFB40038F36D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */; };
 		90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */; };
 		90DB7D9E2AD7B5F70038F36D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */; };
@@ -100,6 +101,7 @@
 		8BF2F7392AF9867300796DE4 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		8BF2F73A2AF9867300796DE4 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		907A48DF2AF866140006B9FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		908218AC2B1D116600FF3390 /* UploadRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadRecipeViewController.swift; sourceTree = "<group>"; };
 		90DB7D982AD7A6470038F36D /* PassplateApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PassplateApp.entitlements; sourceTree = "<group>"; };
 		90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				857A89C42ADDFB63000B40DE /* SearchViewController.swift */,
 				857A89CC2ADDFC2D000B40DE /* RecipeResponse.swift */,
 				857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */,
+				908218AC2B1D116600FF3390 /* UploadRecipeViewController.swift */,
 				8584E9152B01DA0F0005927B /* RecipeDataModel.xcdatamodeld */,
 				907A48DF2AF866140006B9FF /* SettingsViewController.swift */,
 				857A89C62ADDFB88000B40DE /* Recipe.swift */,
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				857A89C52ADDFB64000B40DE /* SearchViewController.swift in Sources */,
+				908218AD2B1D116600FF3390 /* UploadRecipeViewController.swift in Sources */,
 				1BBED5E82AFAEE78003A193C /* DietaryRestrictions.swift in Sources */,
 				90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */,
 				857A89C72ADDFB88000B40DE /* Recipe.swift in Sources */,
