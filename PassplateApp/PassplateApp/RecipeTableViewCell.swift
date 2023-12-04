@@ -33,4 +33,9 @@ class RecipeTableViewCell: UITableViewCell {
            delegate?.didTapFavoriteButton(on: self)
        }
 
+    func setFavoriteButton(isFavorite: Bool) {
+        let imageName = isFavorite ? "heart.fill" : "heart"
+        favButton.setImage(UIImage(systemName: imageName), for: .normal)
+    }
+
 }
