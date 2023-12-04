@@ -334,37 +334,38 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         return cell
     }
 
-//
-//    func saveRecipeToCoreData(_ recipe: Recipe) {
-//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//        let recipeEntity = NSEntityDescription.insertNewObject(
-//            forEntityName: "RecipeEntity",
-//            into: context)
-//        recipeEntity.setValue(recipe.idMeal, forKey: "idMeal")
-//        recipeEntity.setValue(recipe.strMeal, forKey: "strMeal")
-//        recipeEntity.setValue(recipe.strMealThumb, forKey: "strMealThumb")
-//
-//        saveContext()
-//    }
     
     func saveRecipeToFirestore(_ recipe: Recipe) {
         guard let uid = Auth.auth().currentUser?.uid else {
             print("No user is currently logged in.")
             return
         }
-        
+
         let firestore = Firestore.firestore()
-        let recipeDict: [String: Any] = [
-            "idMeal": recipe.idMeal,
-            "strMeal": recipe.strMeal,
-            "strMealThumb": recipe.strMealThumb
-        ]
+        let favoritesRef = firestore.collection("users").document(uid).collection("favorites")
         
-        firestore.collection("users").document(uid).collection("favorites").addDocument(data: recipeDict) { error in
-            if let error = error {
-                print("Error adding document: \(error)")
-            } else {
-                print("Document added with ID: \(recipe.idMeal)")
+        // Check if the recipe already exists
+        favoritesRef.whereField("idMeal", isEqualTo: recipe.idMeal).getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            }
+
+            // If the recipe does not exist, add it
+            if querySnapshot?.documents.isEmpty ?? true {
+                let recipeDict: [String: Any] = [
+                    "idMeal": recipe.idMeal,
+                    "strMeal": recipe.strMeal,
+                    "strMealThumb": recipe.strMealThumb
+                ]
+                
+                favoritesRef.addDocument(data: recipeDict) { error in
+                    if let error = error {
+                        print("Error adding document: \(error)")
+                    } else {
+                        print("Document added with ID: \(recipe.idMeal)")
+                    }
+                }
             }
         }
     }
