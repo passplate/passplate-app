@@ -58,6 +58,8 @@
 		907A48E02AF866140006B9FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907A48DF2AF866140006B9FF /* SettingsViewController.swift */; };
 		908218AD2B1D116600FF3390 /* UploadRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908218AC2B1D116600FF3390 /* UploadRecipeViewController.swift */; };
 		90B9A9022B1D7E3B0033CDE3 /* UploadedRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B9A9012B1D7E3B0033CDE3 /* UploadedRecipe.swift */; };
+		90B9A9042B1E64480033CDE3 /* SingleUploadedRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B9A9032B1E64480033CDE3 /* SingleUploadedRecipeViewController.swift */; };
+		90B9A9062B1E6AFC0033CDE3 /* UploadedRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B9A9052B1E6AFB0033CDE3 /* UploadedRecipeTableViewCell.swift */; };
 		90DB7D9A2AD7AFB40038F36D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */; };
 		90DB7D9C2AD7B0C10038F36D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */; };
 		90DB7D9E2AD7B5F70038F36D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */; };
@@ -104,6 +106,8 @@
 		907A48DF2AF866140006B9FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		908218AC2B1D116600FF3390 /* UploadRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadRecipeViewController.swift; sourceTree = "<group>"; };
 		90B9A9012B1D7E3B0033CDE3 /* UploadedRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedRecipe.swift; sourceTree = "<group>"; };
+		90B9A9032B1E64480033CDE3 /* SingleUploadedRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleUploadedRecipeViewController.swift; sourceTree = "<group>"; };
+		90B9A9052B1E6AFB0033CDE3 /* UploadedRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		90DB7D982AD7A6470038F36D /* PassplateApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PassplateApp.entitlements; sourceTree = "<group>"; };
 		90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90DB7D9B2AD7B0C10038F36D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -163,9 +167,11 @@
 				8501102B2ACF43A60068A749 /* Main.storyboard */,
 				8584E9182B02A02E0005927B /* FavoritesViewController.swift */,
 				8565D6042AF84D2A005AA9D7 /* RecipeTableViewCell.swift */,
+				90B9A9052B1E6AFB0033CDE3 /* UploadedRecipeTableViewCell.swift */,
 				857A89C42ADDFB63000B40DE /* SearchViewController.swift */,
 				857A89CC2ADDFC2D000B40DE /* RecipeResponse.swift */,
 				857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */,
+				90B9A9032B1E64480033CDE3 /* SingleUploadedRecipeViewController.swift */,
 				908218AC2B1D116600FF3390 /* UploadRecipeViewController.swift */,
 				8584E9152B01DA0F0005927B /* RecipeDataModel.xcdatamodeld */,
 				907A48DF2AF866140006B9FF /* SettingsViewController.swift */,
@@ -330,8 +336,10 @@
 				90DB7D9E2AD7B5F70038F36D /* SignupViewController.swift in Sources */,
 				850110262ACF43A60068A749 /* AppDelegate.swift in Sources */,
 				8584E9192B02A02E0005927B /* FavoritesViewController.swift in Sources */,
+				90B9A9042B1E64480033CDE3 /* SingleUploadedRecipeViewController.swift in Sources */,
 				857A89C92ADDFBA0000B40DE /* FullRecipe.swift in Sources */,
 				857A89CB2ADDFBC3000B40DE /* Recipes.swift in Sources */,
+				90B9A9062B1E6AFC0033CDE3 /* UploadedRecipeTableViewCell.swift in Sources */,
 				8584E9172B01DA0F0005927B /* RecipeDataModel.xcdatamodeld in Sources */,
 				850110282ACF43A60068A749 /* SceneDelegate.swift in Sources */,
 				907A48E02AF866140006B9FF /* SettingsViewController.swift in Sources */,

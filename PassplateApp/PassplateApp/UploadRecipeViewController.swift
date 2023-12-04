@@ -109,6 +109,7 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
                             } else {
                                 // Save the recipe details along with the image URL in Firestore
                                 let uploadedRecipeDict: [String: Any] = [
+                                    "recipeId": recipeID,
                                     "recipeName": recipeName,
                                     "recipeImageURL": url?.absoluteString ?? "",
                                     "recipeCountryOfOrigin": recipeCountryOfOrigin,
@@ -137,7 +138,6 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
                                             self.ingredientList = []
                                             self.cookingInstructionsTextView.text = ""
                                             self.ingredientsTableView.reloadData()
-                                            
                                         }
                                 }
                             }

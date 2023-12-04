@@ -53,7 +53,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
         }
         
         fetchRecipeResults(idMeal: recipe.idMeal)
-        categoryLabel.text = fullRecipe.strCategory
+        categoryLabel.text = fullRecipe.strArea
         // create and present alert if allergy list contains any of the user's allergies
     }
     
@@ -135,7 +135,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
 
                         // Update Labels with full recipe results
                         DispatchQueue.main.async {
-                            self.categoryLabel.text = "Category: \(self.fullRecipe.strCategory)"
+                            self.categoryLabel.text = "Area of Origin: \(self.fullRecipe.strArea)"
                             self.instructionsLabel.numberOfLines = 0
                             self.instructionsLabel.lineBreakMode = .byWordWrapping
                             self.instructionsLabel.text = "Instructions: \(self.fullRecipe.strInstructions)"
