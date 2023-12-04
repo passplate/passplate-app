@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  PassplateApp
 //
 //  Created by Summer Ely on 10/5/23.
@@ -23,7 +23,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     @IBOutlet var searchBar: UISearchBar!
     var inputSearchText: String
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     var recipes: Recipes
     let recipeCellIdentifier = "RecipeCell"
     let recipeSegueIdentifier = "RecipeSegueIdentifier"
@@ -45,6 +45,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         searchBar.text = inputSearchText
         fetchUserData()
         fetchSearchResults(searchVal: inputSearchText)
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = SettingsManager.shared.selectedSegment
+    }
+    
+    @objc func segmentedControlValueChanged() {
+        SettingsManager.shared.selectedSegment = segmentedControl.selectedSegmentIndex
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,8 +76,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     }
     
     func fetchSearchResults(searchVal: String) {
-        let encodedArea = searchVal.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let urlString = "https://www.themealdb.com/api/json/v1/1/filter.php?a=\(encodedArea)"
+        var urlString = ""
+
+           switch SettingsManager.shared.selectedSegment {
+           case 0:
+               // Search by area
+               let encodedArea = searchVal.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+               urlString = "https://www.themealdb.com/api/json/v1/1/filter.php?a=\(encodedArea)"
+           case 1:
+               // Search by recipe name
+               let encodedName = searchVal.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+               urlString = "https://www.themealdb.com/api/json/v1/1/search.php?s=\(encodedName)"
+           default:
+               break
+           }
+
         
         guard let url = URL(string: urlString) else {
             print("Invalid URL.")

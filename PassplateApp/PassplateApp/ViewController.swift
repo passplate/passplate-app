@@ -16,6 +16,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     let settingsSegueIdentifier = "HomeToSettingsSegue"
     var userAllergens: [String] = []
     var userName: String = ""
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     let countryToLocationMap = [
         "American": "New York, USA",
@@ -56,8 +57,14 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         for (country, location) in countryToLocationMap {
             addAnnotationForCountry(country, atLocation: location)
         }
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = SettingsManager.shared.selectedSegment
     }
 
+    @objc func segmentedControlValueChanged() {
+        SettingsManager.shared.selectedSegment = segmentedControl.selectedSegmentIndex
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         performSegue(withIdentifier: "SearchSegueIdentifier", sender: self)
     }
@@ -125,3 +132,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     }
 }
 
+class SettingsManager {
+    static let shared = SettingsManager()
+    var selectedSegment: Int = 0
+}
