@@ -31,6 +31,7 @@ class RecipeTableViewCell: UITableViewCell {
     
     @IBAction func favButtonTapped(_ sender: UIButton) {
            delegate?.didTapFavoriteButton(on: self)
+            favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
        }
 
 }

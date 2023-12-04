@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "0BC78B8F-2906-409E-94AA-4C926A96E40E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6707D65F-B551-4C68-91EA-B1299163EEBF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PassplateApp/RecipeTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "RecipeTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "6707D65F-B551-4C68-91EA-B1299163EEBF - 6cdb3cfabfd4016b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PassplateApp.RecipeTableViewCell.__allocating_init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; PassplateApp.RecipeTableViewCell"
+                  moduleName = "PassplateApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/summerely/Desktop/ios/passplate-app/PassplateApp/PassplateApp/RecipeTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "6707D65F-B551-4C68-91EA-B1299163EEBF - af2f2156b1ff4f61"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PassplateApp.RecipeTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; PassplateApp.RecipeTableViewCell"
+                  moduleName = "PassplateApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/summerely/Desktop/ios/passplate-app/PassplateApp/PassplateApp/RecipeTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "6707D65F-B551-4C68-91EA-B1299163EEBF - f68a241d6a1490d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PassplateApp.RecipeTableViewCell.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;PassplateApp.RecipeTableViewCell&gt;"
+                  moduleName = "PassplateApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/summerely/Desktop/ios/passplate-app/PassplateApp/PassplateApp/RecipeTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "6707D65F-B551-4C68-91EA-B1299163EEBF - 65d33484cd91f330"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PassplateApp.RecipeTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;PassplateApp.RecipeTableViewCell&gt;"
+                  moduleName = "PassplateApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/summerely/Desktop/ios/passplate-app/PassplateApp/PassplateApp/RecipeTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "6707D65F-B551-4C68-91EA-B1299163EEBF - 668e6eb5175f5393"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PassplateApp.RecipeTableViewCell.__deallocating_deinit"
+                  moduleName = "PassplateApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/summerely/Desktop/ios/passplate-app/PassplateApp/PassplateApp/RecipeTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
