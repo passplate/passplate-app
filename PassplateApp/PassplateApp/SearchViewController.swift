@@ -334,18 +334,41 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         return cell
     }
 
+//
+//    func saveRecipeToCoreData(_ recipe: Recipe) {
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let recipeEntity = NSEntityDescription.insertNewObject(
+//            forEntityName: "RecipeEntity",
+//            into: context)
+//        recipeEntity.setValue(recipe.idMeal, forKey: "idMeal")
+//        recipeEntity.setValue(recipe.strMeal, forKey: "strMeal")
+//        recipeEntity.setValue(recipe.strMealThumb, forKey: "strMealThumb")
+//
+//        saveContext()
+//    }
     
-    func saveRecipeToCoreData(_ recipe: Recipe) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let recipeEntity = NSEntityDescription.insertNewObject(
-            forEntityName: "RecipeEntity",
-            into: context)
-        recipeEntity.setValue(recipe.idMeal, forKey: "idMeal")
-        recipeEntity.setValue(recipe.strMeal, forKey: "strMeal")
-        recipeEntity.setValue(recipe.strMealThumb, forKey: "strMealThumb")
+    func saveRecipeToFirestore(_ recipe: Recipe) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("No user is currently logged in.")
+            return
+        }
         
-        saveContext()
+        let firestore = Firestore.firestore()
+        let recipeDict: [String: Any] = [
+            "idMeal": recipe.idMeal,
+            "strMeal": recipe.strMeal,
+            "strMealThumb": recipe.strMealThumb
+        ]
+        
+        firestore.collection("users").document(uid).collection("favorites").addDocument(data: recipeDict) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+            } else {
+                print("Document added with ID: \(recipe.idMeal)")
+            }
+        }
     }
+
     
     func saveContext () {
         if context.hasChanges {
@@ -365,7 +388,7 @@ extension SearchViewController: RecipeTableViewCellDelegate {
     func didTapFavoriteButton(on cell: RecipeTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let recipe = filteredMeals[indexPath.row]
-        saveRecipeToCoreData(recipe)
+        saveRecipeToFirestore(recipe)
     }
 }
 

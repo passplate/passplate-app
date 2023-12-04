@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class LoginViewController: UIViewController {
     
@@ -58,5 +59,31 @@ class LoginViewController: UIViewController {
                     self.passwordTextField.text = nil
                 }
         }
+        createUserDoc()
     }
+    
+    func createUserDoc() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("No user is currently logged in.")
+            return
+        }
+
+        let userDocRef = Firestore.firestore().collection("users").document(uid)
+
+        userDocRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                print("User document already exists.")
+            } else {
+                print("User document does not exist. Creating one.")
+                userDocRef.setData(["name": "Default Name", "allergies": []]) { error in
+                    if let error = error {
+                        print("Error writing document: \(error)")
+                    } else {
+                        print("User document successfully created.")
+                    }
+                }
+            }
+        }
+    }
+
 }

@@ -7,43 +7,52 @@
 
 import UIKit
 import CoreData
+import FirebaseFirestore
+import FirebaseAuth
 
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipeTableViewCellDelegate {
     
     func didTapFavoriteButton(on cell: RecipeTableViewCell) {
-//        var recipeList = retrieveRecipes()
-//        let recipeObj = pizzaList[cell.row]
-//        context.delete(recipeObj)
-//        pizzaList.remove(at:indexPath.row)
-//        tableView.deleteRows(at: [indexPath], with: .fade)
-//        saveContext()
+        // Add later
     }
     
     
     @IBOutlet weak var tableView: UITableView!
-    var favoriteRecipes: [NSManagedObject] = []
+    var favoriteRecipes: [Recipe] = []
     let recipeCellIdentifier = "RecipeCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        favoriteRecipes = retrieveRecipes()
+        retrieveFavoritesFromFirestore()
     }
     
-    func retrieveRecipes() -> [NSManagedObject] {
-        // get me an array of saved recipes from core data
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RecipeEntity")
-        var fetchedResults:[NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            print("Error occurred while retrieving data")
-            abort()
+    func retrieveFavoritesFromFirestore() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+               print("No user is currently logged in.")
+               return
+           }
+        Firestore.firestore().collection("users").document(uid).collection("favorites").getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                self.favoriteRecipes.removeAll()
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    // Create a Recipe object from document data and add it to favoriteRecipes
+                    let data = document.data()
+                    let recipe = Recipe(idMeal: data["idMeal"] as? String ?? "", strMeal: data["strMeal"] as? String ?? "", strMealThumb: data["strMealThumb"] as? String ?? "")
+                    self.favoriteRecipes.append(recipe)
+                }
+                self.tableView.reloadData()
+            }
         }
-        
-        return(fetchedResults)!
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        retrieveFavoritesFromFirestore()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,12 +68,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let row = indexPath.row
         let meal = favoriteRecipes[row]
-        cell.recipeNameLabel?.text = meal.value(forKey: "strMeal") as? String
+        cell.recipeNameLabel?.text = meal.strMeal
         cell.recipeNameLabel?.numberOfLines = 0
-//        cell.recipeImageView?.contentMode = .scaleAspectFit
         
         // Using the imageURL from the filtered meal
-        if let imageURL = URL(string: meal.value(forKey: "strMealThumb") as! String) {
+        if let imageURL = URL(string: meal.strMealThumb) {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
                     DispatchQueue.main.async {
