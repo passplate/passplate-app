@@ -187,6 +187,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource {
                 cell.textLabel?.textColor = .white
             }
         }
+        cell.textLabel?.font = UIFont(name: "Poppins", size: 16.0)
         cell.textLabel?.text = "\(ingredientMeasure.0) \(ingredientMeasure.1)"
         
         return cell
