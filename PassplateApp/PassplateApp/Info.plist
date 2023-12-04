@@ -9,6 +9,8 @@
 		<string>Poppins-Regular.ttf</string>
 		<string>Poppins-Light.ttf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to the camera to capture photos for your library</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
