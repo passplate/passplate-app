@@ -41,6 +41,7 @@
 		857A89CF2ADDFC3F000B40DE /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */; };
 		8584E9172B01DA0F0005927B /* RecipeDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8584E9152B01DA0F0005927B /* RecipeDataModel.xcdatamodeld */; };
 		8584E9192B02A02E0005927B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8584E9182B02A02E0005927B /* FavoritesViewController.swift */; };
+		8BE8E28C2B1D8F84009D929B /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8E28B2B1D8F84009D929B /* icon.jpg */; };
 		904527212AD59AD600EC3736 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 904527202AD59AD600EC3736 /* FirebaseAppCheck */; };
 		904527232AD59AD600EC3736 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 904527222AD59AD600EC3736 /* FirebaseAppDistribution-Beta */; };
 		904527252AD59AD600EC3736 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 904527242AD59AD600EC3736 /* FirebaseAuth */; };
@@ -82,6 +83,7 @@
 		857A89CE2ADDFC3F000B40DE /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		8584E9162B01DA0F0005927B /* RecipeDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8584E9182B02A02E0005927B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		8BE8E28B2B1D8F84009D929B /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = icon.jpg; path = ../../../../Downloads/icon.jpg; sourceTree = "<group>"; };
 		8BF2F7292AF9866100796DE4 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
 		8BF2F72A2AF9867200796DE4 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		8BF2F72B2AF9867200796DE4 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				90DB7D9D2AD7B5F70038F36D /* SignupViewController.swift */,
 				1B9C21F02AF76EED0024794E /* SettingsViewController.swift */,
 				8501102E2ACF43A70068A749 /* Assets.xcassets */,
+				8BE8E28B2B1D8F84009D929B /* icon.jpg */,
 				850110302ACF43A70068A749 /* LaunchScreen.storyboard */,
 				90DB7D992AD7AFB40038F36D /* GoogleService-Info.plist */,
 				850110332ACF43A70068A749 /* Info.plist */,
@@ -289,6 +292,7 @@
 				8567B5F12AF9ACD300E59083 /* Poppins-BoldItalic.ttf in Resources */,
 				8567B5F22AF9ACD300E59083 /* Poppins-ExtraBold.ttf in Resources */,
 				8567B5F32AF9ACD300E59083 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				8BE8E28C2B1D8F84009D929B /* icon.jpg in Resources */,
 				8567B5F42AF9ACD300E59083 /* Poppins-ExtraLight.ttf in Resources */,
 				8567B5F52AF9ACD300E59083 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				8567B5F62AF9ACD300E59083 /* Poppins-Italic.ttf in Resources */,
