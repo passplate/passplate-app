@@ -33,7 +33,7 @@ class SingleUploadedRecipeViewController: UIViewController, UITableViewDataSourc
         
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
-        recipeLabel.text = uploadedRecipe?.recipeName
+        recipeLabel.text = uploadedRecipe!.recipeName
         fetchUserData()
         
         recipeImage.layer.cornerRadius = 20
@@ -63,8 +63,24 @@ class SingleUploadedRecipeViewController: UIViewController, UITableViewDataSourc
         }
         
         fetchAllergens()
-        categoryLabel.text = uploadedRecipe?.recipeCountryOfOrigin
-        instructionsLabel.text = uploadedRecipe?.recipeInstructions
+        categoryLabel.text = " Area of Origin: \(uploadedRecipe!.recipeCountryOfOrigin)"
+        instructionsLabel.numberOfLines = 0
+        instructionsLabel.lineBreakMode = .byWordWrapping
+        instructionsLabel.text = "Instructions: \(uploadedRecipe!.recipeInstructions)"
+        instructionsLabel.sizeToFit()
+        
+        if !self.allergenIngredients.isEmpty {
+            let controller = UIAlertController(
+            title: "Allergens present",
+            message: "recipe contains: \(self.allergenIngredients.joined(separator: ","))",
+            preferredStyle: .alert
+            )
+
+            controller.addAction(UIAlertAction(title: "Ok", style: .default))
+            print("should reach here")
+            self.present(controller, animated: true)
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
