@@ -34,7 +34,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     let dietaryRestrictions = DietaryRestrictions.shared.restrictions
     var showFilteredRecipes: Bool = false
     var allergenMap: [String: Bool] = [:]
-
+    var favoriteRecipes: [Recipe] = []
 
     
     override func viewDidLoad() {
@@ -47,6 +47,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         fetchSearchResults(searchVal: inputSearchText)
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = SettingsManager.shared.selectedSegment
+        retrieveFavoritesFromFirestore()
     }
     
     @objc func segmentedControlValueChanged() {
@@ -305,6 +306,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         cell.recipeNameLabel?.text = meal.strMeal
         cell.recipeNameLabel?.numberOfLines = 0
         cell.recipeImageView?.contentMode = .scaleAspectFit
+        cell.setFavoriteButton(isFavorite: isRecipeFavorite(meal))
         
         // Using the imageURL from the filtered meal
         if let imageURL = URL(string: meal.strMealThumb) {
@@ -334,6 +336,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         return cell
     }
 
+    func isRecipeFavorite(_ recipe: Recipe) -> Bool {
+        return favoriteRecipes.contains(where: { $0.idMeal == recipe.idMeal })
+    }
     
     func saveRecipeToFirestore(_ recipe: Recipe) {
         guard let uid = Auth.auth().currentUser?.uid else {
@@ -369,7 +374,28 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
             }
         }
     }
-
+    
+    func retrieveFavoritesFromFirestore() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+               print("No user is currently logged in.")
+               return
+           }
+        Firestore.firestore().collection("users").document(uid).collection("favorites").getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                self.favoriteRecipes.removeAll()
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    // Create a Recipe object from document data and add it to favoriteRecipes
+                    let data = document.data()
+                    let recipe = Recipe(idMeal: data["idMeal"] as? String ?? "", strMeal: data["strMeal"] as? String ?? "", strMealThumb: data["strMealThumb"] as? String ?? "")
+                    self.favoriteRecipes.append(recipe)
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     func saveContext () {
         if context.hasChanges {
