@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
 class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                   UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -23,6 +24,8 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
     let uid = Auth.auth().currentUser?.uid
     var ingredientList: [String] = []
     let defaultImage = UIImage(systemName: "square.and.arrow.up")
+    var storageRef: StorageReference!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,8 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
 
         cookingInstructionsTextView.layer.borderColor = UIColor.lightGray.cgColor
         cookingInstructionsTextView.layer.borderWidth = 1
+        storageRef = Storage.storage().reference()
+
         
     }
     
@@ -48,48 +53,100 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
             title: "Ok",
             style: .default
         ))
-        
-        if recipeImage.image == defaultImage {
-            controller.message = "Recipe Image field is empty"
-            present(controller, animated: true)
-        }
-    
+            
         if recipeNameTextField.text!.isEmpty {
-            controller.message = "Recipe Name field is empty"
+            controller.message = "Enter a recipe name"
             present(controller, animated: true)
         }
         
-        if countryTextView.text!.isEmpty {
-            controller.message = "Country of origin field is empty"
+        else if recipeImage.image?.pngData() == defaultImage?.pngData() {
+            controller.message = "Upload a Recipe Image"
             present(controller, animated: true)
         }
         
-        if ingredientList.isEmpty {
-            controller.message = "Ingredient List is empty"
+        else if countryTextView.text!.isEmpty {
+            controller.message = "Enter the recipe's country of origin"
             present(controller, animated: true)
         }
         
-        if cookingInstructionsTextView.text!.isEmpty {
-            controller.message = "Cooking directions field is empty"
+        else if ingredientList.isEmpty {
+            controller.message = "List the recipe's ingredients"
             present(controller, animated: true)
+        }
+        
+        else if cookingInstructionsTextView.text!.isEmpty {
+            controller.message = "List the recipe's cooking directions"
+            present(controller, animated: true)
+        } else {
+            let firestore = Firestore.firestore()
+            let recipeName = recipeNameTextField.text!
+            let recipeImg = recipeImage.image!
+            
+            let recipeCountryOfOrigin = countryTextView.text!
+            let recipeIngredients = ingredientList
+            let recipeInstructions = cookingInstructionsTextView.text!
+            
+            // Create a unique ID for the recipe document
+            let recipeID = UUID().uuidString
+
+            // Upload the image to Firebase Storage
+            if let imageData = recipeImg.jpegData(compressionQuality: 0.7) {
+                let imageRef = storageRef.child("recipe_images/\(recipeID).png")
+                
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/png"
+                
+                imageRef.putData(imageData, metadata: metadata) { (_, error) in
+                    if let error = error {
+                        print("Error uploading image: \(error.localizedDescription)")
+                        // Handle the error
+                    } else {
+                        // Get the download URL for the uploaded image
+                        imageRef.downloadURL { (url, error) in
+                            if let error = error {
+                                print("Error getting download URL: \(error.localizedDescription)")
+                                // Handle the error
+                            } else {
+                                // Save the recipe details along with the image URL in Firestore
+                                let uploadedRecipeDict: [String: Any] = [
+                                    "recipeName": recipeName,
+                                    "recipeImageURL": url?.absoluteString ?? "",
+                                    "recipeCountryOfOrigin": recipeCountryOfOrigin,
+                                    "recipeIngredients": recipeIngredients,
+                                    "recipeInstructions": recipeInstructions
+                                ]
+                                
+                                firestore.collection("users").document(self.uid!).collection("uploadedRecipes").addDocument(data: uploadedRecipeDict) { error in
+                                        if let error = error {
+                                            print("Error adding document: \(error)")
+                                        } else {
+                                            let uploadController = UIAlertController(
+                                                title: "Recipe Successfully Uploaded",
+                                                message: "View your uploaded recipes in the saved recipes tab!",
+                                                preferredStyle: .alert
+                                            )
+                                            
+                                            uploadController.addAction(UIAlertAction (
+                                                title: "Ok",
+                                                style: .default
+                                            ))
+                                            self.present(uploadController, animated: true)
+                                            self.recipeNameTextField.text = ""
+                                            self.recipeImage.image = self.defaultImage
+                                            self.countryTextView.text = ""
+                                            self.ingredientList = []
+                                            self.cookingInstructionsTextView.text = ""
+                                            self.ingredientsTableView.reloadData()
+                                            
+                                        }
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
         }
 
-                    
-        let firestore = Firestore.firestore()
-        let uploadedRecipeDict: [String: Any] = [
-            "recipeName": recipeNameTextField.text!,
-            "recipeImage": recipeImage.image!,
-            "recipeCountryOfOrigin": countryTextView.text!,
-            "recipeIngredients": ingredientList,
-            "recipeInstructions": cookingInstructionsTextView.text!
-        ]
-        
-        firestore.collection("users").document(uid!).collection("uploadedRecipes").addDocument(data: uploadedRecipeDict) { error in
-                    if let error = error {
-                        print("Error adding document: \(error)")
-                    }
-            }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -169,7 +226,6 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
            handler: {
             (action) in
             ingredientToAdd = controller.textFields![0].text!
-            print(ingredientToAdd)
             self.ingredientList.append(ingredientToAdd)
             self.ingredientsTableView.reloadData()
         }))
