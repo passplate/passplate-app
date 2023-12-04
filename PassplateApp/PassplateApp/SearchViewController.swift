@@ -415,9 +415,48 @@ extension SearchViewController: RecipeTableViewCellDelegate {
     func didTapFavoriteButton(on cell: RecipeTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let recipe = filteredMeals[indexPath.row]
-        saveRecipeToFirestore(recipe)
+
+        if isRecipeFavorite(recipe) {
+            removeRecipeFromFirestore(recipe)
+            if let index = favoriteRecipes.firstIndex(where: { $0.idMeal == recipe.idMeal }) {
+                favoriteRecipes.remove(at: index)
+            }
+            cell.setFavoriteButton(isFavorite: false)
+        } else {
+            saveRecipeToFirestore(recipe)
+            favoriteRecipes.append(recipe)
+            cell.setFavoriteButton(isFavorite: true)
+        }
     }
 }
+
+func removeRecipeFromFirestore(_ recipe: Recipe) {
+    guard let uid = Auth.auth().currentUser?.uid else {
+        print("No user is currently logged in.")
+        return
+    }
+
+    let firestore = Firestore.firestore()
+    let favoritesRef = firestore.collection("users").document(uid).collection("favorites")
+    favoritesRef.whereField("idMeal", isEqualTo: recipe.idMeal).getDocuments { (querySnapshot, err) in
+        if let err = err {
+            print("Error getting documents: \(err)")
+            return
+        }
+        
+        // Assuming there's only one document per recipe
+        if let document = querySnapshot?.documents.first {
+            document.reference.delete { error in
+                if let error = error {
+                    print("Error removing document: \(error)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+        }
+    }
+}
+
 
 extension SearchViewController: SettingsViewControllerDelegate {
     func didChangeFilteredRecipesSetting(to value: Bool) {

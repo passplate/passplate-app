@@ -639,67 +639,78 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f8t-As-5kh">
-                                <rect key="frame" x="16" y="126" width="361" height="610"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sY9-Gh-NKA">
+                                <rect key="frame" x="16" y="126" width="361" height="640"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="174" id="h0h-7y-BKx" customClass="RecipeTableViewCell" customModule="PassplateApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="174" id="cce-xA-oZd" customClass="RecipeTableViewCell" customModule="PassplateApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="361" height="174"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h0h-7y-BKx" id="DVT-TK-ewo">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cce-xA-oZd" id="3Ue-2L-zVd">
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWh-6c-G9P">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xc8-mB-Bc4">
                                                     <rect key="frame" x="0.0" y="24" width="361" height="111"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5I5-0y-8eg">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kCq-cj-XQS">
                                                             <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="153" id="rvr-nM-Uij" customClass="RecipeTableViewCell" customModule="PassplateApp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-30" width="361" height="153"/>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" rowHeight="153" id="8Jg-TS-Ac8" customClass="RecipeTableViewCell" customModule="PassplateApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="-11" width="361" height="153"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rvr-nM-Uij" id="Bd8-9A-Xfh">
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Jg-TS-Ac8" id="27W-Vo-gSn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="153"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJf-qI-44I">
-                                                                        <rect key="frame" x="0.0" y="11" width="361" height="122"/>
+                                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBd-oO-jZF">
+                                                                        <rect key="frame" x="0.0" y="15" width="361" height="122"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVk-XU-p99">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9h6-OH-3Q6">
                                                                                 <rect key="frame" x="8" y="6" width="111" height="111"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4q-1e-wb9">
-                                                                                <rect key="frame" x="127" y="47" width="218" height="29"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tew-3f-dzH">
+                                                                                <rect key="frame" x="283" y="62" width="70" height="61"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
+                                                                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                                                                </buttonConfiguration>
+                                                                                <connections>
+                                                                                    <action selector="favButtonTapped:" destination="cce-xA-oZd" eventType="touchUpInside" id="EFG-aQ-eXg"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TU-X2-UZc">
+                                                                                <rect key="frame" x="127" y="21" width="226" height="80"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="backgroundColor" red="0.96470588239999999" green="0.92941176469999998" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </view>
                                                                 </subviews>
                                                             </tableViewCellContentView>
                                                             <connections>
-                                                                <outlet property="containerView" destination="pJf-qI-44I" id="qcX-dU-W1D"/>
-                                                                <outlet property="recipeImageView" destination="XVk-XU-p99" id="26f-5i-D30"/>
+                                                                <outlet property="containerView" destination="CBd-oO-jZF" id="hro-nz-6WH"/>
+                                                                <outlet property="recipeImageView" destination="9h6-OH-3Q6" id="igH-Bg-8Xf"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="containerView" destination="DVT-TK-ewo" id="sQT-mt-Jpx"/>
-                                            <outlet property="recipeImageView" destination="XVk-XU-p99" id="OKo-TO-iDJ"/>
-                                            <outlet property="recipeNameLabel" destination="N4q-1e-wb9" id="Ab3-06-b5W"/>
+                                            <outlet property="containerView" destination="3Ue-2L-zVd" id="n8N-79-HRf"/>
+                                            <outlet property="favButton" destination="Tew-3f-dzH" id="ihl-zh-gpM"/>
+                                            <outlet property="recipeImageView" destination="9h6-OH-3Q6" id="dtY-Vx-AAU"/>
+                                            <outlet property="recipeNameLabel" destination="7TU-X2-UZc" id="qza-FP-O3k"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -710,12 +721,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="star_corrected_color" selectedImage="star_corrected_color" id="Oar-pn-dAo"/>
                     <connections>
-                        <outlet property="tableView" destination="f8t-As-5kh" id="Oyc-MY-Lpd"/>
+                        <outlet property="tableView" destination="sY9-Gh-NKA" id="hOW-cM-i9f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Fb-6Z-Syo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4613" y="1851"/>
+            <point key="canvasLocation" x="4612.9770992366412" y="1850.7042253521129"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="8gG-cr-kNB">
@@ -960,7 +971,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="b6o-zp-mef"/>
-        <segue reference="WSY-W3-z0T"/>
+        <segue reference="87a-s4-reD"/>
         <segue reference="aPq-2l-GSI"/>
     </inferredMetricsTieBreakers>
     <resources>

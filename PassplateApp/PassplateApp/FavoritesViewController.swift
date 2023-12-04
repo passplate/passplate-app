@@ -13,9 +13,14 @@ import FirebaseAuth
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecipeTableViewCellDelegate {
     
     func didTapFavoriteButton(on cell: RecipeTableViewCell) {
-        // Add later
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let recipe = favoriteRecipes[indexPath.row]
+
+        removeRecipeFromFirestore(recipe)
+        favoriteRecipes.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
-    
+
     
     @IBOutlet weak var tableView: UITableView!
     var favoriteRecipes: [Recipe] = []
@@ -70,7 +75,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         let meal = favoriteRecipes[row]
         cell.recipeNameLabel?.text = meal.strMeal
         cell.recipeNameLabel?.numberOfLines = 0
-        
+        cell.favButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         // Using the imageURL from the filtered meal
         if let imageURL = URL(string: meal.strMealThumb) {
             DispatchQueue.global().async {
