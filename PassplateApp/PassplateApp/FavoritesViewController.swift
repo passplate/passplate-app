@@ -43,13 +43,15 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == recipeSegueIdentifier,
            let destination = segue.destination as? RecipeViewController,
            let recipeIndex = tableView.indexPathForSelectedRow?.row {
+            print("SEGUE CLICKED")
+
                 destination.recipe = favoriteRecipes[recipeIndex]
         }
-//        if segue.identifier == uploadRecipeSegueIdentifier,
-//           let destination = segue.destination as? SingleUploadedRecipeViewController,
-//           let recipeIndex = tableView.indexPathForSelectedRow?.row {
-//                destination.recipe = favoriteRecipes[recipeIndex]
-//        }
+        if segue.identifier == uploadRecipeSegueIdentifier,
+           let destination = segue.destination as? SingleUploadedRecipeViewController,
+           let recipeIndex = tableView.indexPathForSelectedRow?.row {
+                destination.uploadedRecipe = uploadedRecipes[recipeIndex]
+        }
         
     }
     
