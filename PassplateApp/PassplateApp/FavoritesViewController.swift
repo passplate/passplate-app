@@ -25,12 +25,21 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     var favoriteRecipes: [Recipe] = []
     let recipeCellIdentifier = "RecipeCell"
+    let recipeSegueIdentifier = "RecipeSegueIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         retrieveFavoritesFromFirestore()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == recipeSegueIdentifier,
+           let destination = segue.destination as? RecipeViewController,
+           let recipeIndex = tableView.indexPathForSelectedRow?.row {
+                destination.recipe = favoriteRecipes[recipeIndex]
+        }
     }
     
     func retrieveFavoritesFromFirestore() {

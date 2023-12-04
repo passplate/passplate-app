@@ -30,7 +30,7 @@
                     <connections>
                         <segue destination="Efz-wO-DBJ" kind="relationship" relationship="viewControllers" id="F8g-9j-fWb"/>
                         <segue destination="2cd-0f-LqS" kind="relationship" relationship="viewControllers" id="nsc-lp-H2a"/>
-                        <segue destination="nEm-C4-bpn" kind="relationship" relationship="viewControllers" id="ck2-W6-BC3"/>
+                        <segue destination="Ldz-II-mQ5" kind="relationship" relationship="viewControllers" id="ck2-W6-BC3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1H-ew-jiq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -711,6 +711,7 @@
                                             <outlet property="favButton" destination="Tew-3f-dzH" id="ihl-zh-gpM"/>
                                             <outlet property="recipeImageView" destination="9h6-OH-3Q6" id="dtY-Vx-AAU"/>
                                             <outlet property="recipeNameLabel" destination="7TU-X2-UZc" id="qza-FP-O3k"/>
+                                            <segue destination="niL-8a-Ga7" kind="show" identifier="RecipeSegueIdentifier" id="hhD-5k-Ao1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -719,14 +720,14 @@
                         <viewLayoutGuide key="safeArea" id="cvZ-KQ-yBx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="star_corrected_color" selectedImage="star_corrected_color" id="Oar-pn-dAo"/>
+                    <navigationItem key="navigationItem" id="Dpf-N7-Ace"/>
                     <connections>
                         <outlet property="tableView" destination="sY9-Gh-NKA" id="hOW-cM-i9f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Fb-6Z-Syo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4612.9770992366412" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="5539.6946564885493" y="1850.7042253521129"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="8gG-cr-kNB">
@@ -968,9 +969,29 @@
             </objects>
             <point key="canvasLocation" x="513.74045801526711" y="1850.7042253521129"/>
         </scene>
+        <!--Favorites-->
+        <scene sceneID="ujO-uc-GEq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ldz-II-mQ5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star_corrected_color" selectedImage="star_corrected_color" id="Oar-pn-dAo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rx1-FJ-KsW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nEm-C4-bpn" kind="relationship" relationship="rootViewController" id="nbR-dd-oPt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKA-Vp-3wD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4612.9770992366412" y="1850.7042253521129"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="b6o-zp-mef"/>
+        <segue reference="hhD-5k-Ao1"/>
         <segue reference="87a-s4-reD"/>
         <segue reference="aPq-2l-GSI"/>
     </inferredMetricsTieBreakers>
