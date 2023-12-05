@@ -1080,7 +1080,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnb-90-Md5">
-                                <rect key="frame" x="16" y="169" width="361" height="613"/>
+                                <rect key="frame" x="16" y="142" width="361" height="640"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Area of Origin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmQ-tU-U5C">
@@ -1127,18 +1127,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwV-Am-9Lj">
-                                <rect key="frame" x="133" y="135" width="98" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
-                                <color key="textColor" systemColor="systemCyanColor"/>
-                                <color key="highlightedColor" red="0.62087055150000003" green="0.77332982279999996" blue="0.88150376080000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e9A-6H-3oF">
-                                <rect key="frame" x="239" y="135" width="30" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemCyanColor"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0Z-Pi-sOW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1168,14 +1156,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="b6o-zp-mef"/>
         <segue reference="0iY-Q7-mp0"/>
-        <segue reference="87a-s4-reD"/>
+        <segue reference="lrG-7B-kVS"/>
         <segue reference="aPq-2l-GSI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="home_corrected_color" width="24" height="24"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="star_corrected_color" width="24" height="24"/>
         <image name="upload_corrected_color" width="24" height="24"/>
         <systemColor name="labelColor">
@@ -1183,9 +1170,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
