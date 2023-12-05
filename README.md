@@ -78,5 +78,5 @@ Faiza Rahman (Release 30%, Overall 22.5%)
 | Settings View Controller | Allows users to edit their allergens and dietary restrictions, and log out functionality | Beta            | Beta           | In our original design, we had both a profile page and a settings page. However, based on the feedback from our Design, we realized that the profile and "social media" aspect wasn't in the scope or focus of our app. Therefore, we decided to combine and simplify this into just the settings page. | Annie 100% |
 | Logo and Home Screen Design | Design of the logo, splash page, and overall homepage layout | Alpha           | Alpha          | None | Faiza 100%  |
 | Map Component | Ability to scroll around on the World Map and click on a country will take you to the search results for that country | Beta | Beta | None | Faiza 100% | 
-| Favorite Recipes | Ability for users to "favorite" recipes and view them in the Saved recipes tab.  | Final | Final | | Summer 100% |
-| Uploading Recipes | Users can upload their own recipes including the name, image, ingredients, country, and instructions, and view them in the Saved recipes tab. | Final | Final | | Annie 100% |
+| Favorite Recipes | Ability for users to "favorite" recipes and view them in the Saved recipes tab.  | Final | Final | None | Summer 100% |
+| Uploading Recipes | Users can upload their own recipes including the name, image, ingredients, country, and instructions, and view them in the Saved recipes tab. | Final | Final | None | Annie 100% |
