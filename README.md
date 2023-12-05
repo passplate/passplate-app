@@ -36,7 +36,7 @@ Anne-Marie Prosper (Release 30%, Overall 25%)
     - Stored user's original images in Firebase storage under the respective recipe's ID.
     - Stored the uploaded recipe information under the 'upload recipes' collection for the respective user. 
 - Implemented a segment view controller in saved recipes
--   If 'Uploaded Recipes' segment is selected, then the recipe's the user had uploaded are fetched from Firestore presented in a table view.
+  - If 'Uploaded Recipes' segment is selected, then the recipe's the user had uploaded are fetched from Firestore presented in a table view.
   - When these cells are clicked on, segues to 'Single Uploaded Recipe View Controller' to present the uploaded recipe in detail.   
 
 Faiza Rahman (Release 30%, Overall 22.5%)
