@@ -263,7 +263,7 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func updateScrollViewContentSize() {
-        scrollView.contentSize = CGSizeMake(320, 1000);
+        scrollView.contentSize = CGSizeMake(320, 1150);
     }
     
     // Handles deletion from both table and data
