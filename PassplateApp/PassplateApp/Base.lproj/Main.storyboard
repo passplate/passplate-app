@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G9G-rz-EEK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G9G-rz-EEK">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -302,11 +303,10 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <color key="backgroundColor" red="0.67450980392156867" green="0.76078431372549016" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.67450982329999998" green="0.7607843876" blue="0.65882354970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <color key="tintColor" red="0.20650026683189573" green="0.63921568630000003" blue="0.091319211405621242" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </tableViewCellContentView>
                                                             <connections>
                                                                 <outlet property="containerView" destination="Pyz-8j-9g4" id="jU5-hX-geo"/>
@@ -1155,8 +1155,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="b6o-zp-mef"/>
-        <segue reference="0iY-Q7-mp0"/>
-        <segue reference="lrG-7B-kVS"/>
+        <segue reference="DOa-QP-JWK"/>
+        <segue reference="87a-s4-reD"/>
         <segue reference="aPq-2l-GSI"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1166,7 +1166,7 @@
         <image name="star_corrected_color" width="24" height="24"/>
         <image name="upload_corrected_color" width="24" height="24"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

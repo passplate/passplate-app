@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,8 +18,26 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .oneTimeCode
         
+        // Set delegates for text fields
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+
+        // Add tap gesture recognizer to dismiss keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
+    // UITextFieldDelegate method to handle return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    // Handle tap gesture to dismiss keyboard
+    @objc func handleTap() {
+        view.endEditing(true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // SigninSegue

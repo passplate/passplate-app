@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseStorage
 
 class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
-                                  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+                                  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var countryTextView: UITextField!
@@ -38,9 +38,32 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
         cookingInstructionsTextView.layer.borderWidth = 1
         storageRef = Storage.storage().reference()
 
-        
+        countryTextView.delegate = self
+        recipeNameTextField.delegate = self
+        cookingInstructionsTextView.delegate = self
+
+        // Add tap gesture recognizer to dismiss keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+           view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+    }
+    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//            if text == "\n" {
+//                textView.resignFirstResponder()
+//                return false
+//            }
+//            return true
+//    }
     
     @IBAction func uploadRecipe(_ sender: Any) {
         let controller = UIAlertController(

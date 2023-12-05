@@ -39,6 +39,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
@@ -47,7 +48,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UISearchBarDe
         fetchSearchResults(searchVal: inputSearchText)
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = SettingsManager.shared.selectedSegment
-        retrieveFavoritesFromFirestore()
+
+        // Add tap gesture recognizer to dismiss keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     @objc func segmentedControlValueChanged() {

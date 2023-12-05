@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,8 +24,28 @@ class SignupViewController: UIViewController {
         confirmPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.textContentType = .oneTimeCode
 
+        // Set delegates for text fields
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+
+        // Add tap gesture recognizer to dismiss keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
-    
+    // UITextFieldDelegate method to handle return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    // Handle tap gesture to dismiss keyboard
+    @objc func handleTap() {
+        view.endEditing(true)
+    }
+
     func isValidEmail(_ email: String) -> Bool {
        let emailRegEx =
            "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
