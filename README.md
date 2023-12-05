@@ -1,68 +1,11 @@
-Summer Ely (Release 10%, Overall 30%)
-- Search page and recipe page
-- Implemented a search page with a search bar component where you can type in a nationality (eg. "American") and it will call the [MealDB API](https://www.themealdb.com/api.php) which will return a list of recipes that are displayed in a table view.
-- Implemented a recipe page that appears when a recipe is selected from the tableview. Recipe name, image, category, ingredients, and instructions are displayed here.
-- Created "Recipe", "Recipes", "FullRecipe", and "RecipeResponse" classes to help with parsing API responses and storing data about recipes. 
-- Added segues from home page to search page and search page to individual recipe page.
-- Added custom font and improved UI of search/recipes page
-
-Trent Ho (Release 30%, Overall 22.5%)
-- Navigation Tab Bar
-- Implemented the NavTab bar and created the icons for the home, upload recipe, and favorites sections.
-- Added segues so that the Tab bar is present in other screens.
-- Filtering System
-  - Integrated a filtering system within the search functionality that filters out recipes based on user-specified allergens and dietary restrictions.
-  - Enhanced the Recipe and FullRecipe models to handle the filtering logic, ensuring recipes with certain ingredients are excluded from the search results.
-- Dark Mode
-  - Implemented dark mode functionality within the app, allowing users to toggle between light and dark themes.
-  - Enabled the dark mode feature to apply across the entire app, persisting user preferences and ensuring a consistent look and feel.
-
-Anne-Marie Prosper (Release 30%, Overall 25%)
-- User Signup & Login screen
-- Added segues to transition from screens to home screen upon successful login.
-- Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
-  - Added alert error messages whenever signin or signup is unsuccessful.
-- Set up Firestore database, allowing each user to store their: name, allergens, and dietary restrictions.
-  -Created an alert that persents on Recipe View Controller whenever a recipe contains an allergen & .
-  -On the Recipe View Controller, highlight ingredients that are allergens in red.
-- Created Settings View Controller 
-  - Enabled user's to edit (adding or removing) their allergens in the database
-  - Display the information within the database to the user.
-  - Added log out functionality, segues back to log in screen.
-- Created Upload Recipe View Controller
-  - Enabled user's to upload their own recipes by populating the all fields.
-    - Presents error alert if any of the fields are not populated or an image is not selected. 
-    - Implemented photo library & camera for the user to add a recipe image.
-    - Stored user's original images in Firebase storage under the respective recipe's ID.
-    - Stored the uploaded recipe information under the 'upload recipes' collection for the respective user. 
-- Implemented a segment view controller in saved recipes
-  - If 'Uploaded Recipes' segment is selected, then the recipe's the user had uploaded are fetched from Firestore presented in a table view.
-  - When these cells are clicked on, segues to 'Single Uploaded Recipe View Controller' to present the uploaded recipe in detail.   
-
-Faiza Rahman (Release 30%, Overall 22.5%)
-- Logo design
-- Home Screen
-- Designed a basic homepage layout in Interface Builder featuring:
-  - Placeholder for the interactive world map.
-  - Search bar component.
-  - Placeholder for the favorites icon.
-- Added and implemented the logic for the map view
-  - Used Geocoder and the API's list of countries to add coordinates for each country included in the API
-  - Implemented the ability to run a search of a coordinate's associated recipes (ex. when the USA coordinate is clicked, it runs a search for "American" food)
-- Updated UI for login/sign-up pages past the barebones stage
-- Added UI to the upload recipes/favorites pages
-
-
 ### Group number: 13
 ### Team Members: Summer Ely, Trent Ho, Anne-Marie Prosper, Faiza Rahman
 ### Name of project: Passplate
-### Dependencies: Xcode 15, latest swift version, (Put in pods/frameworks that need to be installed first here)
+### Dependencies: Xcode 15, latest swift version, Frameworks/Libraries: Firebase
 
-### Special Instructions (this is just place holder will change later)
+### Special Instructions
 * Use an iPhone 14 pro or iPhone 15 pro Simulator
-  *  Before running the app, run "pod install" inside the DragonWar folder where the podfile is located
-  * To login with Facebook, use this test account: email: DragonWarTest@gmail.com password: DragonWar
-  *  To test the connection between two players, you need to set two player mode on, and you need to run it on an iPhone and a simulator at the same time (or 2 simulators)
+  *  To test the camera functionality for the upload recipes function you need to run it on an iPhone
 
 
 ## Features
