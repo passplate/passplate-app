@@ -23,10 +23,21 @@ Anne-Marie Prosper (Release 30%, Overall 25%)
 - Implemented basic user signup/login functionality using email addresses and integrate with Firebase Authentication.
   - Added alert error messages whenever signin or signup is unsuccessful.
 - Set up Firestore database, allowing each user to store their: name, allergens, and dietary restrictions.
+  -Created an alert that persents on Recipe View Controller whenever a recipe contains an allergen & .
+  -On the Recipe View Controller, highlight ingredients that are allergens in red.
 - Created Settings View Controller 
   - Enabled user's to edit (adding or removing) their allergens in the database
   - Display the information within the database to the user.
   - Added log out functionality, segues back to log in screen.
+- Created Upload Recipe View Controller
+  - Enabled user's to upload their own recipes by populating the all fields.
+    - Presents error alert if any of the fields are not populated or an image is not selected. 
+    - Implemented photo library & camera for the user to add a recipe image.
+    - Stored user's original images in Firebase storage under the respective recipe's ID.
+    - Stored the uploaded recipe information under the 'upload recipes' collection for the respective user. 
+- Implemented a segment view controller in saved recipes
+-   If 'Uploaded Recipes' segment is selected, then the recipe's the user had uploaded are fetched from Firestore presented in a table view.
+  - When these cells are clicked on, segues to 'Single Uploaded Recipe View Controller' to present the uploaded recipe in detail.   
 
 Faiza Rahman (Release 30%, Overall 22.5%)
 - Logo design
