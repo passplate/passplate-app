@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G9G-rz-EEK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G9G-rz-EEK">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -29,7 +30,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Efz-wO-DBJ" kind="relationship" relationship="viewControllers" id="F8g-9j-fWb"/>
-                        <segue destination="2cd-0f-LqS" kind="relationship" relationship="viewControllers" id="nsc-lp-H2a"/>
+                        <segue destination="pH3-f8-7xF" kind="relationship" relationship="viewControllers" id="nsc-lp-H2a"/>
                         <segue destination="Ldz-II-mQ5" kind="relationship" relationship="viewControllers" id="ck2-W6-BC3"/>
                     </connections>
                 </tabBarController>
@@ -42,7 +43,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wq1-WT-E2Q">
@@ -108,7 +109,7 @@
             <objects>
                 <viewController id="wcF-EF-AoG" customClass="SettingsViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EXe-Zq-B24">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nd8-cI-vNO">
@@ -236,7 +237,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="d4R-qW-oB6" customClass="SearchViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ahg-8y-CLS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="VEx-qF-qr2">
@@ -368,7 +369,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="niL-8a-Ga7" customClass="RecipeViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uzO-tG-qdr">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26L-YG-Wuf">
@@ -460,7 +461,7 @@
             <objects>
                 <viewController title="Upload Recipe View Controller" modalPresentationStyle="fullScreen" id="2cd-0f-LqS" customClass="UploadRecipeViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ycP-HN-jfS">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PassPlate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBd-ZU-WWj">
@@ -586,11 +587,12 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAS-cf-Sb9">
-                                        <rect key="frame" x="133" y="926" width="135" height="35"/>
+                                        <rect key="frame" x="190" y="938" width="24" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Upload Recipe">
+                                            <fontDescription key="titleFontDescription" name="Poppins-Regular" family="Poppins" pointSize="0.0"/>
                                             <color key="baseBackgroundColor" red="0.20392156859999999" green="0.63921568630000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -605,7 +607,14 @@
                         <viewLayoutGuide key="safeArea" id="pfF-vn-Bpc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upload Recipe" image="upload_corrected_color" selectedImage="upload_corrected_color" id="jTQ-HY-J6m"/>
+                    <navigationItem key="navigationItem" id="u7A-oH-E4U">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="AcM-kh-uOj">
+                            <color key="tintColor" red="0.20392156859999999" green="0.63921568630000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <segue destination="wcF-EF-AoG" kind="show" identifier="UploadRecipeToSettingsSegue" id="Pqm-SC-VPZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cookingInstructionsTextView" destination="6ni-yE-F9d" id="ejq-2a-sND"/>
                         <outlet property="countryTextView" destination="hrx-ag-V5a" id="hDR-h5-FaY"/>
@@ -617,14 +626,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxc-HJ-9HO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3832.8244274809158" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="4759.5419847328239" y="1850.7042253521129"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="ynX-oG-fOB">
             <objects>
                 <viewController title="Favorites View Controller" modalPresentationStyle="fullScreen" id="nEm-C4-bpn" customClass="FavoritesViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f6p-ha-jLp">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PassPlate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wm5-f8-FGs">
@@ -805,7 +814,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Fb-6Z-Syo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5539.6946564885493" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="6466.4122137404574" y="1850.7042253521129"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="8gG-cr-kNB">
@@ -816,28 +825,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="in2-fW-Drh">
-                                <rect key="frame" x="30" y="276" width="321" height="34"/>
+                                <rect key="frame" x="36" y="254" width="321" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RK4-f6-BUN">
-                                <rect key="frame" x="30" y="380" width="321" height="34"/>
+                                <rect key="frame" x="36" y="358" width="321" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0of-le-AOV">
-                                <rect key="frame" x="30" y="247" width="58" height="21"/>
+                                <rect key="frame" x="36" y="225" width="58" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome Back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tM-Il-k1V">
-                                <rect key="frame" x="30" y="174" width="155" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -870,17 +872,17 @@
                                     <segue destination="5N9-nj-kBN" kind="presentation" identifier="CreateAccountSegue" modalPresentationStyle="fullScreen" id="OYU-4x-Xcf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmA-bT-Kw6">
-                                <rect key="frame" x="30" y="133" width="84" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2O-jv-RGp">
+                                <rect key="frame" x="36" y="326" width="95" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2O-jv-RGp">
-                                <rect key="frame" x="30" y="348" width="95" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to PassPlate!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmA-bT-Kw6">
+                                <rect key="frame" x="22" y="146" width="349" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1035,7 +1037,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home_corrected_color" selectedImage="home_corrected_color" id="jPZ-jg-gVP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FBj-g6-K5s">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1054,7 +1056,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="star_corrected_color" selectedImage="star_corrected_color" id="Oar-pn-dAo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rx1-FJ-KsW">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1064,14 +1066,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKA-Vp-3wD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4612.9770992366412" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="5539.6946564885493" y="1850.7042253521129"/>
         </scene>
         <!--Single Uploaded Recipe View Controller-->
         <scene sceneID="G7O-3k-Wo0">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="qCy-iu-kOk" customClass="SingleUploadedRecipeViewController" customModule="PassplateApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bMH-fr-ZM7">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1q-qa-xmK">
@@ -1156,14 +1158,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bha-my-dKZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6441.9847328244268" y="1850.7042253521129"/>
+            <point key="canvasLocation" x="7368.7022900763359" y="1850.7042253521129"/>
+        </scene>
+        <!--Upload Recipe-->
+        <scene sceneID="ZiJ-gH-O2i">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pH3-f8-7xF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Upload Recipe" image="upload_corrected_color" selectedImage="upload_corrected_color" id="jTQ-HY-J6m"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wf7-0P-R0u">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2cd-0f-LqS" kind="relationship" relationship="rootViewController" id="8bp-VW-HpJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOy-44-VoV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3832.8244274809158" y="1850.7042253521129"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="b6o-zp-mef"/>
-        <segue reference="0iY-Q7-mp0"/>
-        <segue reference="cLL-dm-cIQ"/>
-        <segue reference="aPq-2l-GSI"/>
+        <segue reference="DOa-QP-JWK"/>
+        <segue reference="87a-s4-reD"/>
+        <segue reference="2bq-3Y-rR2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
@@ -1172,7 +1193,7 @@
         <image name="star_corrected_color" width="24" height="24"/>
         <image name="upload_corrected_color" width="24" height="24"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
