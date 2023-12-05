@@ -22,4 +22,4 @@
 | Logo and Home Screen Design | Design of the logo, splash page, and overall homepage layout | Alpha           | Alpha          | None | Faiza 100%  |
 | Map Component | Ability to scroll around on the World Map and click on a country will take you to the search results for that country | Beta | Beta | None | Faiza 100% | 
 | Favorite Recipes | Ability for users to "favorite" recipes and view them in the Saved recipes tab.  | Final | Final | None | Summer 100% |
-| Uploading Recipes | Users can upload their own recipes including the name, image, ingredients, country, and instructions, and view them in the Saved recipes tab. | Final | Final | None | Annie 100% |
+| Uploading Recipes | Users can upload their own recipes including the name, image, ingredients, country, and instructions, and view them in the Saved recipes tab. | Final | Final | In our original design we had a feature that would allow uploaded recipes to be seen by other users on the app, however we removed the "social media" aspect from our project, thus uploaded recipes are only viewable by the user who uploaded the recipe.| Annie 100% |
