@@ -283,7 +283,7 @@
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             </imageView>
                                                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjy-9y-ZMc">
-                                                                                <rect key="frame" x="283" y="62" width="70" height="61"/>
+                                                                                <rect key="frame" x="291" y="63" width="70" height="61"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
@@ -296,14 +296,17 @@
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goe-Ps-e9v">
                                                                                 <rect key="frame" x="127" y="21" width="226" height="80"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                <color key="tintColor" red="0.67450982329999998" green="0.7607843876" blue="0.65882354970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" red="0.20392156859999999" green="0.63921568630000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </view>
                                                                 </subviews>
+                                                                <color key="backgroundColor" red="0.67450982329999998" green="0.7607843876" blue="0.65882354970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="tintColor" red="0.20650026683189573" green="0.63921568630000003" blue="0.091319211405621242" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             </tableViewCellContentView>
                                                             <connections>
                                                                 <outlet property="containerView" destination="Pyz-8j-9g4" id="jU5-hX-geo"/>
@@ -732,7 +735,7 @@
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             </imageView>
                                                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-tj-ROV">
-                                                                                <rect key="frame" x="283" y="62" width="70" height="61"/>
+                                                                                <rect key="frame" x="291" y="60" width="70" height="61"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system">
@@ -750,7 +753,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" red="0.96470588239999999" green="0.92941176469999998" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" red="0.67450982329999998" green="0.7607843876" blue="0.65882354970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     </view>
                                                                 </subviews>
                                                             </tableViewCellContentView>
@@ -1165,7 +1168,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="b6o-zp-mef"/>
         <segue reference="0iY-Q7-mp0"/>
-        <segue reference="lrG-7B-kVS"/>
+        <segue reference="87a-s4-reD"/>
         <segue reference="aPq-2l-GSI"/>
     </inferredMetricsTieBreakers>
     <resources>
