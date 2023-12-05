@@ -30,10 +30,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     let recipeSegueIdentifier = "RecipeSegueIdentifier"
     let uploadedRecipeCellIdentifier = "UploadedRecipeCell"
     let uploadRecipeSegueIdentifier = "UploadRecipeSegueIdentifier"
+    let segueToSettingsIdentifier = "FavoritesToSettingsSegue"
     var selectedTab = "Favorites"
+    var userAllergens: [String] = []
+    var userName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchUserData()
         tableView.delegate = self
         tableView.dataSource = self
         retrieveFavoritesFromFirestore()
@@ -43,14 +47,17 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == recipeSegueIdentifier,
            let destination = segue.destination as? RecipeViewController,
            let recipeIndex = tableView.indexPathForSelectedRow?.row {
-            print("SEGUE CLICKED")
-
                 destination.recipe = favoriteRecipes[recipeIndex]
         }
         if segue.identifier == uploadRecipeSegueIdentifier,
            let destination = segue.destination as? SingleUploadedRecipeViewController,
            let recipeIndex = tableView.indexPathForSelectedRow?.row {
                 destination.uploadedRecipe = uploadedRecipes[recipeIndex]
+        }
+        if segue.identifier == segueToSettingsIdentifier,
+           let destination = segue.destination as? SettingsViewController {
+               destination.name = userName
+               destination.allergyList = userAllergens
         }
         
     }
@@ -190,6 +197,22 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-
+    func fetchUserData() {
+        let uid = Auth.auth().currentUser?.uid
+        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user data from Firestore: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                // User document exists, and you can access its data
+                if let userData = document.data() {
+                    // Access specific fields from userData
+                    self.userName = (userData["name"] as? String)!
+                    self.userAllergens = (userData["allergies"] as? [String])!
+                }
+            } else {
+                print("User document does not exist in Firestore.")
+            }
+        }
+    }
 
 }

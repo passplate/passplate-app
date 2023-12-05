@@ -790,7 +790,14 @@
                         <viewLayoutGuide key="safeArea" id="cvZ-KQ-yBx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Dpf-N7-Ace"/>
+                    <navigationItem key="navigationItem" id="Dpf-N7-Ace">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="F59-Rt-qui">
+                            <color key="tintColor" red="0.20392156859999999" green="0.63921568630000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <segue destination="wcF-EF-AoG" kind="show" identifier="FavoritesToSettingsSegue" id="Ikq-eR-Rnr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="wvn-e5-bi4" id="oOO-wq-Nbw"/>
                         <outlet property="tableView" destination="sY9-Gh-NKA" id="hOW-cM-i9f"/>
@@ -1155,7 +1162,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="b6o-zp-mef"/>
         <segue reference="0iY-Q7-mp0"/>
-        <segue reference="87a-s4-reD"/>
+        <segue reference="cLL-dm-cIQ"/>
         <segue reference="aPq-2l-GSI"/>
     </inferredMetricsTieBreakers>
     <resources>

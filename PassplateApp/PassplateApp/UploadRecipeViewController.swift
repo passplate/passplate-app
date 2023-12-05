@@ -25,10 +25,15 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
     var ingredientList: [String] = []
     let defaultImage = UIImage(systemName: "square.and.arrow.up")
     var storageRef: StorageReference!
+    let segueToSettingsIdentifier = "UploadRecipeToSettingsSegue"
+    var userAllergens: [String] = []
+    var userName: String = ""
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchUserData()
             
         recipeImage.image = defaultImage
         ingredientsTableView.delegate = self
@@ -47,6 +52,15 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueToSettingsIdentifier,
+           let destination = segue.destination as? SettingsViewController {
+               destination.name = userName
+               destination.allergyList = userAllergens
+        }
+    }
+    
     
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
            view.endEditing(true)
@@ -275,6 +289,24 @@ class UploadRecipeViewController: UIViewController, UITableViewDelegate, UITable
 
             // Delete the corresponding row from the table view
             ingredientsTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func fetchUserData() {
+        let uid = Auth.auth().currentUser?.uid
+        Firestore.firestore().collection("users").document(uid!).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user data from Firestore: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                // User document exists, and you can access its data
+                if let userData = document.data() {
+                    // Access specific fields from userData
+                    self.userName = (userData["name"] as? String)!
+                    self.userAllergens = (userData["allergies"] as? [String])!
+                }
+            } else {
+                print("User document does not exist in Firestore.")
+            }
         }
     }
 
